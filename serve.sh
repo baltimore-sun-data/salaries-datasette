@@ -1,3 +1,4 @@
+#! /bin/bash
 set -eux -o pipefail
 
 # Get the directory that this script file is in
