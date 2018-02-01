@@ -1,3 +1,4 @@
+## Python stuff
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -99,3 +100,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+## Project stuff
+data/
+src/
+venv-datasette/

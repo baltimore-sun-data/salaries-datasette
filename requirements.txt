@@ -1,0 +1,19 @@
+-e git+https://github.com/simonw/csvs-to-sqlite.git@2830a5850cdd018c11247cde08a199aff1255205#egg=csvs_to_sqlite
+-e git+https://github.com/simonw/datasette.git@0.14#egg=datasette
+aiofiles==0.3.2
+click-default-group==1.2
+click==6.7
+httptools==0.0.10
+hupper==1.0
+Jinja2==2.10
+MarkupSafe==1.0
+numpy==1.14.0
+pandas==0.20.3
+py-lru-cache==0.1.4
+python-dateutil==2.6.1
+pytz==2017.3
+sanic==0.7.0
+six==1.11.0
+ujson==1.35
+uvloop==0.9.1
+websockets==4.0.1
