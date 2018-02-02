@@ -109,3 +109,8 @@ ENV/
 data/
 src/
 venv-datasette/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
