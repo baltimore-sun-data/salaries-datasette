@@ -2,8 +2,33 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="/-/static/app.css?{{ app_css_hash }}">
+        <!--Basic page needs-->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=1.2">
+    <!--Facebook Stuff-->
+    <meta property="og:title" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <meta property="og:site_name" content="The Baltimore Sun">
+    <meta property="og:description" content="">
+    <meta property="fb:app_id" content="310302989040998">
+    <!--Twitter Stuff-->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@baltimoresun">
+    <meta name="twitter:creator" content="">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:domain" content="baltimoresun.com">
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato|Montserrat">
+    <link rel="stylesheet" href="/static/fonts.css">
+    <link rel="stylesheet" href="/static/app.css?v=1.3">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 {% for url in extra_css_urls %}
     <link rel="stylesheet" href="{{ url.url }}"{% if url.sri %} integrity="{{ url.sri }}" crossorigin="anonymous"{% endif %}>
 {% endfor %}
@@ -13,11 +38,42 @@
 {% block extra_head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
+<script>
+    ((((window.trb || (window.trb = {})).data || (trb.data = {})).metrics || (trb.data.metrics = {})).thirdparty = {
+        pageName: 'bs:dataproject:news:maryland:salary-2107:dataproject.',
+        channel: 'news:maryland',
+        server: 'data.baltimoresun.com',
+        hier1: 'baltimoresun:news:maryland',
+        hier2: 'news:maryland',
+        prop1: 'D=pageName',
+        prop2: 'news',
+        prop38: 'dataproject',
+        prop57: 'D=c38',
+        eVar20: 'baltimoresun',
+        eVar21: 'D=c38',
+        eVar34: 'D=ch',
+        eVar35: 'D=pageName',
+        events:''
+    });  
+</script>
 
-{% block content %}
-{% endblock %}
+<script src="http://www.baltimoresun.com/thirdpartyservice?disablenav=false&disablessor=true" async></script>
+<div data-trb-thirdpartynav></div>
+<div id="popsearches">
+    <strong>Popular searches: </strong>
+    <a href="#">All records</a>
+    <a href="#">General Assembly</a>
+    <a href="#">Public universities</a> 
+    <a href="#">State police</a>
+    <div id="share-tools"><span class="icon-facebook"></span><span class="icon-twitter"></span></div>
+</div>
+<div id="verkapselung">
 
-<div class="ft">
+    <h1>MARYLAND SALARY DATABASE: 2017 SALARIES</h1>
+    {% block content %}
+    {% endblock %}
+</div>
+<!--<div class="ft">
     Powered by <a href="https://github.com/simonw/datasette" title="Datasette v{{ datasette_version }}">Datasette</a>
     {% if query_ms %}&middot; Query took {{ query_ms|round(3) }}ms{% endif %}
     {% if metadata.license or metadata.license_url %}&middot; Data license:
@@ -32,7 +88,7 @@
             <a href="{{ metadata.source_url }}">
         {% endif %}{{ metadata.source or metadata.source_url }}{% if metadata.source_url %}</a>{% endif %}
     {% endif %}
-</div>
+</div>-->
 {% if select_templates %}<!-- Templates considered: {{ select_templates|join(", ") }} -->{% endif %}
 </body>
 </html>

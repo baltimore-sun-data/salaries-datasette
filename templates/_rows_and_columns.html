@@ -1,16 +1,40 @@
-<table>
+<table id="dbresults">
     <thead>
         <tr>
-            {% for column in display_columns %}<th scope="col">{{ column }}</th>{% endfor %}
+            <th scope="col">Link</th>
+            <th scope="col">First name</th>
+            <th scope="col">Middle initial</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Organization</th>
+            <th scope="col">YTD gross earnings</th>
         </tr>
     </thead>
     <tbody>
     {% for row in display_rows %}
-        <tr>
+        <tr class="{{ loop.cycle('odd', 'even') }} fancyfloat">
             {% for cell in row %}
-                <td>{{ cell.value }}</td>
+                {% if cell.column == 'Link' %}
+                    <td>{{ cell.value }}</td>
+                {% endif %}
+                {% if cell.column == 'first_name' %}
+                    <td>{{ cell.value }}</td>
+                {% endif %}
+                {% if cell.column == 'middle_initial' %}
+                    <td>{{ cell.value }}</td>
+                {% endif %}
+                {% if cell.column == 'last_name' %}
+                    <td>{{ cell.value }}</td>
+                {% endif %}
+                {% if cell.column == 'organization' %}
+                    <td>{{ cell.value }}</td>
+                {% endif %}
+                {% if cell.column == 'ytd_gross_earnings' %}
+                    <td>{{ "${:,.2f}".format(cell.value|float) }}</td>
+                {% endif %}
             {% endfor %}
         </tr>
     {% endfor %}
     </tbody>
 </table>
+
+{# Fields: Link    rowid   first_name  middle_initial  last_name   suffix  system  organization    subtitle    agency  class_code  pay_rate    ytd_gross_earnings  annual_salary   regular_earnings    overtime_earnings   other_earnings  term_date #}

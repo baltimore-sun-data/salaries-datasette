@@ -1,0 +1,159 @@
+/* This document is for project-specific css only. */
+
+hr {
+	border-color: white;
+}
+div.sharethiswrapper {
+    margin: auto;
+    text-align: center;
+    width: 200px;
+}
+div.sharethiswrapper a img {
+    float: none;
+    margin: auto;
+}
+
+.highlight{
+    background-color:#ffffff!important;
+}
+div.for5  {
+	border:1px solid #ffffff;
+}
+#dbform {
+	text-align: center;
+}
+div.rangeselector, div.dbsearch {
+	position: relative;
+	display: inline-block;
+	width:260px; 
+	/*height:120px;*/
+	height:auto;
+	padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color:#0b7285;
+    color: white;
+    font-weight: bold;
+    vertical-align: top;
+}
+/*div.rangeselector:after, div.dbsearch:after {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: #607D8B;
+	z-index: -1;
+}*/
+div.roundcaveat{
+	color:#99e9f2;
+}
+div.dbsearch input, div.rangeselector input{ 
+    width:90%;
+    padding: 5px;
+    margin-bottom: 2px;
+    border: none;
+    border-radius: 5px;
+}
+div.dbsearch .label{
+	min-height:30px;
+}
+td {
+	padding: 5px;
+}
+td.fldtypetwo {
+	display:none;
+}
+table#dbresults{
+	font-size:12px;
+	margin: 20px auto;
+	width:100%;
+}
+#dbresults tr.fancyfloat:hover{
+	background:#66d9e8;
+	cursor:pointer;
+}
+table#dbresults tr td span{
+	margin:6px 3px 6px 3px;
+	display:block;
+}
+#dbresults tr.odd{
+	/*background: #c5f6fa;*/
+}
+#dbresults tr.even, #dbresults thead{
+	background: #99e9f2
+}
+#verkapselung{
+	max-width: 1000px;
+	margin:0 auto;
+	float:none;
+	padding: 20px; 
+	text-align: left;
+}
+@media (max-width: 768px) {
+	div#verkapselung {
+		padding: 10px; 
+	} 
+}
+div.realmin, div.realmax{
+	display:none;
+}
+td.sortingbyme{
+	/*A subtle, relatively succinct cross-platform solution for opacity, as described at  http://robertnyman.com/2010/01/11/css-background-transparency-without-affecting-child-elements-through-rgba-and-filters/ */
+	background: rgba(0, 0, 0, 0.03);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#07000000, endColorstr=#07000000);
+}
+div#detailmessage, div#valuespersistwarning, div.sourclines{
+	margin-top:10px;
+	margin-bottom:10px; 
+}
+#chatter{
+	line-height:160%;
+	text-align: left;
+	margin-bottom: 15px;
+}
+#verkapselung .ui-slider-range{
+	background:#D6E1F0; 
+	/* ^A shade of the main color in our 2010 site branding, as per http://www.colorhexa.com/1b2f4a*/ 
+}
+#verkapselung input.submitbutton, .archivesOut, .advtoggle {
+	display:block;
+	margin: 20px auto 0;
+	padding: 3px 10px;
+	border: 3px solid #0b7285;
+	border-radius: 10px;
+	background: none;
+	background-color: none;
+	color:#0b7285;
+	font-size: 36px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-shadow: none;
+	text-align: center;
+}
+#verkapselung input.submitbutton:hover, .archivesOut:hover, .advtoggle:hover {	
+	background-color: #99e9f2;
+}
+.archivesOut {
+	width: 12em;
+	display:block;
+	margin: 20px auto;
+	padding: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	color:#0b7285!important;
+}
+
+.advtoggle {
+	display:inline-block;
+	padding: 10px;
+	border-width: 0 3px;
+	font-size: 24px;
+}
+.advtoggle a {
+	text-decoration: none;
+	font-family: "Lato", Helvetica, Arial, sans-serif;
+	color:inherit;
+}
