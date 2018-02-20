@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block title %}{{ database }}: {{ table }}: {% if filtered_table_rows or filtered_table_rows == 0 %}{{ "{:,}".format(filtered_table_rows) }} row{% if filtered_table_rows == 1 %}{% else %}s{% endif %}{% endif %}
     {% if human_filter_description %}where {{ human_filter_description }}{% endif %}{% endblock %}
 
@@ -17,21 +16,13 @@
 {% block body_class %}table db-{{ database|to_css_class }} table-{{ table|to_css_class }}{% endblock %}
 
 {% block content %}
-<div class="hd"><a href="/">home</a> / <a href="/{{ database }}-{{ database_hash }}">{{ database }}</a></div>
-
-<h1 style="padding-left: 10px; border-left: 10px solid #{{ database_hash[:6] }}">{{ metadata.title or table }}{% if is_view %} (view){% endif %}</h1>
+<!--<div class="hd"><a href="/">home</a> / <a href="/{{ database }}-{{ database_hash }}">{{ database }}</a></div>-->
 
 {% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
 
-{% if filtered_table_rows or human_filter_description %}
-    <h3>{% if filtered_table_rows or filtered_table_rows == 0 %}{{ "{:,}".format(filtered_table_rows) }} row{% if filtered_table_rows == 1 %}{% else %}s{% endif %}{% endif %}
-        {% if human_filter_description %}where {{ human_filter_description }}{% endif %}
-    </h3>
-{% endif %}
-
 <form class="filters" action="/{{ database }}-{{ database_hash }}/{{ table|quote_plus }}" method="get">
     {% if supports_search %}
-        <div class="search-row"><label for="_search">Search:</label><input id="_search" type="search" name="_search" value="{{ search }}"></div>
+        <div class="dbsearch search-table"><label for="_search">Search:</label><input id="_search" type="search" name="_search" value="{{ search }}"></div>
     {% endif %}
     {% for column, lookup, value in filters.selections() %}
         <div class="filter-row">
@@ -51,12 +42,15 @@
             </div><input type="text" name="_filter_value_{{ loop.index }}" class="filter-value" value="{{ value }}">
         </div>
     {% endfor %}
-    <div class="filter-row">
+    <div class="dbsearch filter-row">
         <div class="select-wrapper">
+            Filter: 
             <select name="_filter_column">
                 <option value="">- column -</option>
                 {% for column in filter_columns %}
+                    {% if column in ("first_name", "last_name", "organization", "agency", "class_code", "ytd_gross_earnings", "annual_salary", "regular_earnings", "overtime_earnings", "other_earnings", "term_date") %}
                       <option>{{ column }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div><div class="select-wrapper filter-op">
@@ -68,26 +62,19 @@
         </div><input type="text" name="_filter_value" class="filter-value">
         <input type="submit" value="{% if filters.has_selections() %}Apply filters{% else %}Add filter{% endif %}">
     </div>
+    <div class="dbsearch"><a class="button back-btn" href="/">Back to main search</a></div>
 </form>
 
-{% if query.sql %}
-    <p><a class="not-underlined" title="{{ query.sql }}" href="/{{ database }}-{{ database_hash }}?{{ {'sql': query.sql}|urlencode|safe }}{% if query.params %}&amp;{{ query.params|urlencode|safe }}{% endif %}">&#x270e; <span class="underlined">View and edit SQL</span></a></p>
+{% if filtered_table_rows or human_filter_description %}
+    <p>{% if filtered_table_rows or filtered_table_rows == 0 %}{{ "{:,}".format(filtered_table_rows) }} row{% if filtered_table_rows == 1 %}{% else %}s{% endif %}{% endif %}
+        {% if human_filter_description %}where {{ human_filter_description }}{% endif %}
+    </p>
 {% endif %}
-
 <p>This data as <a href="{{ url_json }}">.json</a>, <a href="{{ url_jsono }}">.jsono</a></p>
 
 {% include custom_rows_and_columns_templates %}
-
 {% if next_url %}
      <p><a href="{{ next_url }}">Next page</a></p>
-{% endif %}
-
-{% if table_definition %}
-    <pre>{{ table_definition }}</pre>
-{% endif %}
-
-{% if view_definition %}
-    <pre>{{ view_definition }}</pre>
 {% endif %}
 
 {% endblock %}

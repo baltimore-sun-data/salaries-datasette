@@ -1,16 +1,26 @@
-<table>
+<table class="dbresults">
     <thead>
         <tr>
-            {% for column in display_columns %}<th scope="col">{{ column }}</th>{% endfor %}
+            <th scope="col">Link</th>
+            <th scope="col">First name</th>
+            <th scope="col">Middle initial</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Organization</th>
+            <th scope="col">YTD gross earnings</th>
         </tr>
     </thead>
     <tbody>
     {% for row in display_rows %}
-        <tr>
+        <tr class="fancyfloat">
             {% for cell in row %}
-                <td>{{ cell.value }}</td>
+                {% if cell.column == 'ytd_gross_earnings' %}
+                    <td class="{{ cell.column }}">{{ "${:,.2f}".format(cell.value|float) }}</td>
+                {% else %}
+                    <td class="{{ cell.column }}">{{ cell.value }}</td>
+                {% endif %}
             {% endfor %}
         </tr>
     {% endfor %}
     </tbody>
 </table>
+

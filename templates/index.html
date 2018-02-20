@@ -5,23 +5,91 @@
 {% block body_class %}index{% endblock %}
 
 {% block content %}
-<h1>{{ metadata.title or "Datasette" }}</h1>
+    <div class="topEarnersWrapper">
+        <p class="topEarnersHead">Top Earners</p>
+        <ul>
+            <li class="topEarner">
+                <a href="#">
+                    <p>NAME</p><p>AMOUNT OF MONEY</p>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-{% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
-
-{% for database in databases %}
-    <h2 style="padding-left: 10px; border-left: 10px solid #{{ database.hash[:6] }}"><a href="{{ database.path }}">{{ database.name }}</a></h2>
-    <p>
-        {{ "{:,}".format(database.table_rows) }} rows in {{ database.tables_count }} table{% if database.tables_count != 1 %}s{% endif %}{% if database.tables_count and database.hidden_tables_count %}, {% endif %}
-        {% if database.hidden_tables_count %}
-            {{ "{:,}".format(database.hidden_table_rows) }} rows in {{ database.hidden_tables_count }} hidden table{% if database.hidden_tables_count != 1 %}s{% endif %}
-        {% endif %}
-        {% if database.views_count %}
-            {% if database.tables_count or database.hidden_tables_count %} - {% endif %}
-            {{ "{:,}".format(database.views_count) }} view{% if database.views_count != 1 %}s{% endif %}
-        {% endif %}
-    </p>
-    <p>{% for table in database.tables_truncated %}<a href="{{ database.path }}/{{ table.name|quote_plus }}" title="{{ table.count }} rows">{{ table.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% if database.tables_more %}, <a href="{{ database.path }}">...</a>{% endif %}</p>
-{% endfor %}
-
+    {% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
+    <div class="search-row dbsearch"><label class="label" for="_search">Search:</label><input id="_search" type="search" name="_search" value="{{ search }}"></div>
+    <form method="GET" id="dbform">
+        <div class="dbsearch one">
+            <div class="label">Full or partial first name:</div><br><input type="text" class="allcaps" name="First+Name" value="" /></select>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Middle Initial:</div><br><input type="text" class="allcaps" name="Middle+Initial" value="" /></select>
+        </div>
+        <div class="dbsearch one">
+            <div class="label">Full or partial last name:</div><br><input type="text" class="allcaps" name="Last+Name" value="" /></select>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Suffix:</div><br><input type="text" class="allcaps" name="Suffix" value="" /></select>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Pay system:</div><br><input type="text" class="allcaps" name="Systtem" value="" /></select>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Agency number:</div><br><input type="text" class="allcaps" name="Agency+%23" value="" /></select>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Organization:</div><br><input type="text" class="allcaps" name="Organization" value="" /></select>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Organization subtitle:</div><br><input type="text" class="allcaps" name="Organization+-+Subtitle" value="" /></select>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Classification code:</div><br><input type="text" class="allcaps" name="Class+Code" value="" /></select>
+        </div>
+        <div class="rangeselector two">Salary/pay scale:<br>
+            <div class="roundcaveat">($0 to  $881,000, rounded outward) </div><br>
+            <input name="Annual+Salarymin" value="0"></input>
+            <input name="Annual+Salarymax" value="881000"></input>
+            <div class="realmin">0</div>
+            <div class="realmax">881000</div>
+        </div>
+        <div class="rangeselector two">Regular earnings:<br>
+            <div class="roundcaveat">($0 to  $878,000, rounded outward) </div><br>
+            <input name="Regular+Earningsmin" value="0"></input>
+            <input name="Regular+Earningsmax" value="878000"></input>
+            <div class="realmin">0</div>
+            <div class="realmax">878000</div>
+        </div>
+        <div class="rangeselector two">Overtime earnings:<br>
+            <div class="roundcaveat">(-$3,000 to  $103,000, rounded outward) </div><br>
+            <input name="Overtime+Earningsmin" value="-3000"></input>
+            <input name="Overtime+Earningsmax" value="103000"></input>
+            <div class="realmin">-3000</div><div class="realmax">103000</div>
+        </div>
+        <div class="rangeselector two">Other earnings:<br>
+            <div class="roundcaveat">(-$20,000 to  $2,623,000, rounded outward) </div><br>
+            <input name="Other+Earningsmin" value="-20000"></input>
+            <input name="Other+Earningsmax" value="2623000"></input>
+            <div class="realmin">-20000</div>
+            <div class="realmax">2623000</div>
+        </div>
+        <div class="rangeselector one">YTD gross compensation:<br>
+            <div class="roundcaveat">($0 to  $2,673,000, rounded outward) </div><br>
+            <input name="YTD-Gross+Earningsmin" value="0"></input>
+            <input name="YTD-Gross+Earningsmax" value="2673000"></input>
+            <div class="realmin">0</div><div class="realmax">2673000</div>
+        </div>
+        <div class="dbsearch two">
+            <div class="label">Status (Type "T" or leave blank):</div><br>
+            <input class="allcaps" name="Status" value="" /></select>
+        </div>
+        <br style="clear:both;"><input type="submit" class="submitbutton" />
+        <div id="valuespersistwarning">All values from the previous search will persist, which may limit your results.<br>
+            <a href="#" style="font-weight: bold; text-decoration: none;">Click here to reset everything.</a>
+        </div>
+    </form>
+    {% for database in databases %}
+        <h2><a href="{{ database.path }}">{{ database.name }}</a></h2>
+        <p>{% for table in database.tables_truncated %}<a href="{{ database.path }}/{{ table.name|quote_plus }}" title="{{ table.count }} rows">{{ table.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}{% if database.tables_more %}, <a href="{{ database.path }}">...</a>{% endif %}</p>
+    {% endfor %}
 {% endblock %}
