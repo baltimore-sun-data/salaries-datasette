@@ -48,37 +48,7 @@
             <select name="_filter_column">
                 <option value="">- column -</option>
                 {% for column in filter_columns %}
-                    {% if column == "first_name" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "last_name" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "organization" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "agency" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "class_code" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "ytd_gross_earnings" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "annual_salary" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "regular_earnings" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "overtime_earnings" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "other_earnings" %}
-                      <option>{{ column }}</option>
-                    {% endif %}
-                    {% if column == "term_date" %}
+                    {% if column in ("first_name", "last_name", "organization", "agency", "class_code", "ytd_gross_earnings", "annual_salary", "regular_earnings", "overtime_earnings", "other_earnings", "term_date") %}
                       <option>{{ column }}</option>
                     {% endif %}
                 {% endfor %}
