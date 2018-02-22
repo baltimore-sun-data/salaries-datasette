@@ -1,9 +1,12 @@
 import csv
+import os
 import re
 
+from csvs_to_sqlite.cli import cli as csvs_cli
+
 date_re = re.compile(r'(\d\d?)\D(\d\d?)\D(\d\d?)')
-inname = 'data/cy2017-md.csv'
-outname = 'data/cy2017-md-updated.csv'
+inname = 'static/csv/cy2017-md.csv'
+outname = 'data/cy2017-md.csv'
 fieldnames = [
   "first_name",
   "middle_initial",
@@ -24,7 +27,7 @@ fieldnames = [
 ]
 
 
-print()
+print("Cleaning up CSV")
 
 with open(inname) as fi, open(outname, 'w') as fo:
     dr = csv.DictReader(fi)
@@ -55,3 +58,27 @@ with open(inname) as fi, open(outname, 'w') as fo:
         dw.writerow(row)
 
 print()
+
+output_db = 'data/salaries.db'
+
+try:
+    os.unlink(output_db)
+except FileNotFoundError:
+    pass
+else:
+    print('Removed old database')
+
+print('Creating database')
+
+csvs_cli.main([
+    '-t', '2017 Maryland state salaries',
+    '-f', 'first_name',
+    '-f', 'middle_initial',
+    '-f', 'last_name',
+    '-f', 'suffix',
+    '-f', 'organization',
+    '-f', 'subtitle',
+    outname, output_db,
+], standalone_mode=False)
+
+print('Done.')
