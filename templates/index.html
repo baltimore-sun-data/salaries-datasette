@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ metadata.title or "Datasette" }}: {% for database in databases %}{{ database.name }}{% if not loop.last %}, {% endif %}{% endfor %}{% endblock %}
+{% block fulltitle %}{% block title %}{{ siteinfo.siteTitle }}{% endblock %}{% endblock %}
 
 {% block body_class %}index{% endblock %}
 
@@ -16,7 +16,6 @@
         </ul>
     </div>
 
-    {% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
     <div class="search-row dbsearch"><label class="label" for="_search">Search:</label><input id="_search" type="search" name="_search" value="{{ search }}"></div>
     <form method="GET" id="dbform">
         <div class="dbsearch one">
