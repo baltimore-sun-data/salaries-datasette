@@ -9,4 +9,5 @@ cd "$THIS_DIR"
 venv-datasette/bin/datasette serve \
     --template-dir ./templates \
     --static static:./static \
+    --metadata metadata.json \
     data/*.db
