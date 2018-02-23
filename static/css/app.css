@@ -617,11 +617,24 @@ td {
   padding: 20px;
   text-align: left;
 }
+
 @media (max-width: 768px) {
   #salary-content {
     padding: 10px;
   }
 }
+
+#salary-content .title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#salary-content .title a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .realmin,
 .realmax {
   display: none;

@@ -81,23 +81,26 @@
 
 <body class="{% block body_class %}{% endblock %}">
   <div data-trb-thirdpartynav></div>
-  <div id="popsearches">
+  <nav id="popsearches">
       <strong>Popular searches: </strong>
-      <a href="#">All records</a>
-      <a href="#">General Assembly</a>
-      <a href="#">Public universities</a>
-      <a href="#">State police</a>
+      <span>
+        <a href="/salaries/2017+Maryland+state+salaries">All records</a>
+        <a href="/salaries/2017+Maryland+state+salaries?organization__exact=GENERAL+ASSEMBLY+OF+MARYLAND">General Assembly</a>
+        <a href="/salaries/2017+Maryland+state+salaries?organization__contains=UNIVERSITY">Public universities</a>
+        <a href="/salaries/2017+Maryland+state+salaries?organization__exact=DEPARTMENT+OF+STATE+POLICE">State police</a>
+        <a href="/salaries?sql=select+*+from+%5B2017+Maryland+state+salaries%5D+order+by+ytd_gross_earnings+desc+limit+50">Top Earners</a>
+      </span>
       <div id="share-tools">
         <span class="icon-facebook"></span>
         <span class="icon-twitter"></span>
       </div>
-  </div>
+  </nav>
 
-  <div id="salary-content">
-      <h1>{{ siteinfo.siteTitle }}</h1>
+  <section id="salary-content">
+      <h1 class="title"><a href="/">{{ siteinfo.siteTitle }}</a></h1>
       {% block content %}
       {% endblock %}
-  </div>
+  </section>
 
   {% include "ad-leaderboard.html" %}
 </body>
