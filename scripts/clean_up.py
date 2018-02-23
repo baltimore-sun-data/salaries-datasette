@@ -81,4 +81,7 @@ csvs_cli.main([
     outname, output_db,
 ], standalone_mode=False)
 
+# Remove temporary file
+os.unlink(outname)
+
 print('Done.')
