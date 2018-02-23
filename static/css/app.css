@@ -832,3 +832,7 @@ a.back-btn {
 .icon-arrow-right2:before {
   content: "\e611";
 }
+
+.l-index-block {
+  margin: 50px 0 100px 0;
+}
