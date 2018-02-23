@@ -4,6 +4,7 @@
     "description": "",
     "imageURL": "",
 } -%}
+{%-  set url = url_json | default("/") | replace(".json", "") -%}
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,24 +55,24 @@
 
     <!-- Metadata -->
     <meta name="robots" content="index,follow">
-    <link rel="icon" href="{{ siteinfo.baseURL}}{{ siteinfo.imageURL }}">
-    <link rel="apple-touch-icon" href="{{ siteinfo.baseURL}}{{ siteinfo.imageURL }}">
-    <link rel="canonical" href="{{ siteinfo.baseURL }}">
+    <link rel="icon" href="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
+    <link rel="apple-touch-icon" href="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
+    <link rel="canonical" href="{{ siteinfo.baseURL }}{{ url }}">
     <meta name="author" content="Baltimore Sun">
     <meta name="description" content="{{ siteinfo.description }}">
     <!--Facebook Stuff-->
     <meta property="fb:app_id" content="310302989040998">
     <meta property="og:description" content="{{ siteinfo.description }}">
-    <meta property="og:image" content="{{ siteinfo.baseURL}}{{ siteinfo.imageURL }}">
+    <meta property="og:image" content="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
     <meta property="og:site_name" content="{{ siteinfo.siteTitle }}">
     <meta property="og:title" content="{{ self.title() }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ siteinfo.baseURL}}">
+    <meta property="og:url" content="{{ siteinfo.baseURL }}{{ url }}">
     <!--Twitter Stuff-->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@baltsundata">
     <meta name="twitter:description" content="{{ siteinfo.description }}">
-    <meta name="twitter:image" content="{{ siteinfo.baseURL}}{{ siteinfo.imageURL }}">
+    <meta name="twitter:image" content="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
     <meta name="twitter:site" content="@baltimoresun">
     <meta name="twitter:title" content="{{ self.title() }}">
 
