@@ -102,6 +102,8 @@ section {
 body {
   line-height: 1;
   margin-top: 50px;
+  min-height: 100vh;
+  width: 100vw;
 }
 ol,
 ul {
@@ -590,19 +592,26 @@ td {
 .fldtypetwo {
   display: none;
 }
+.table-wrapper {
+  overflow-x: scroll;
+  width: 100%;
+}
+
 .dbresults {
   font-size: 12px;
   margin: 20px auto;
-  width: 100%;
 }
+
 .dbresults tr.fancyfloat:hover {
   background: #9ee6d0;
   cursor: pointer;
 }
+
 .dbresults tr td span {
   margin: 6px 3px 6px 3px;
   display: block;
 }
+
 .dbresults tr:nth-child(even),
 .dbresults thead {
   background: #ccf3e7;
@@ -610,12 +619,15 @@ td {
 .dbresults thead {
   font-weight: 900;
 }
+
 #salary-content {
-  max-width: 1000px;
-  margin: 0 auto;
+  box-sizing: border-box;
   float: none;
+  margin: 0 auto;
+  max-width: 100%;
   padding: 20px;
   text-align: left;
+  width: 1000px;
 }
 
 @media (max-width: 768px) {
@@ -726,11 +738,16 @@ div .search-row input {
 a.back-btn {
   color: inherit;
 }
+
 #div-gpt-ad-785317941620082696-1 {
-  width: 40%;
-  margin: 0 auto 20px auto;
   background-color: #ccc;
+  box-sizing: border-box;
+  margin: 0 auto 20px auto;
+  max-width: 95vw;
+  overflow-x: hidden;
+  width: 728px;
 }
+
 .rowid,
 .suffix,
 .system,
@@ -748,18 +765,19 @@ a.back-btn {
 
 /******** FONTS *********/
 @font-face {
-  font-family: 'icons';
-  src:url('fonts/icons/icons.eot?fylnot');
-  src:url('fonts/icons/icons.eot?#iefixfylnot') format('embedded-opentype'),
-    url('fonts/icons/icons.woff?fylnot') format('woff'),
-    url('fonts/icons/icons.ttf?fylnot') format('truetype'),
-    url('fonts/icons/icons.svg?fylnot#icons') format('svg');
+  font-family: "icons";
+  src: url("fonts/icons/icons.eot?fylnot");
+  src: url("fonts/icons/icons.eot?#iefixfylnot") format("embedded-opentype"),
+    url("fonts/icons/icons.woff?fylnot") format("woff"),
+    url("fonts/icons/icons.ttf?fylnot") format("truetype"),
+    url("fonts/icons/icons.svg?fylnot#icons") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-  font-family: 'icons';
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "icons";
   speak: none;
   font-style: normal;
   font-weight: normal;
