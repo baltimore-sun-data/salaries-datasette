@@ -2,9 +2,9 @@
   googletag.cmd.push(function() {
 
   //Adslot 1 declaration
-  gptadslots[1]= googletag.defineSlot('/4011/trb.baltimoresun/news', [[728,90]],'div-gpt-ad-785317941620082696-1').setTargeting('pos',['1']).addService(googletag.pubads());
+  gptadslots.push(googletag.defineSlot('/4011/trb.baltimoresun/news', [[728,90]],'div-gpt-ad-785317941620082696-1').setTargeting('pos',['1']).addService(googletag.pubads()));
 
-  googletag.pubads().setTargeting('ptype',['s']);
+  googletag.pubads().setTargeting('ptype', ['s']);
   googletag.pubads().enableAsyncRendering();
   googletag.enableServices();
   });
