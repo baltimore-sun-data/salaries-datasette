@@ -5,11 +5,11 @@
 {% block body_class %}index{% endblock %}
 
 {% set top_earners = [
-    { "name": "Mark Turgeon", "amount": "$2,720,000", "url": "/salaries/2017+Maryland+state+salaries/89944" },
-    { "name": "Daniel Durkin", "amount": " $2,494,000", "url": "/salaries/2017+Maryland+state+salaries/87856" },
-    { "name": "Brenda Frese", "amount": "$1,180,000", "url": "/salaries/2017+Maryland+state+salaries/89689" },
-    { "name": "Stephen Bartlett", "amount": "$951,000", "url": "/salaries/2017+Maryland+state+salaries/72775" },
-    { "name": "Jay Perman", "amount": "$945,000", "url": "/salaries/2017+Maryland+state+salaries/73514" },
+    { "name": "Mark Turgeon", "amount": "$2,720,000", "url": "/salaries/2017+Maryland+state+salaries/112317" },
+    { "name": "Daniel Durkin", "amount": " $2,494,000", "url": "/salaries/2017+Maryland+state+salaries/30863" },
+    { "name": "Brenda Frese", "amount": "$1,180,000", "url": "/salaries/2017+Maryland+state+salaries/37205" },
+    { "name": "Stephen Bartlett", "amount": "$951,000", "url": "/salaries/2017+Maryland+state+salaries/7156" },
+    { "name": "Jay Perman", "amount": "$945,000", "url": "/salaries/2017+Maryland+state+salaries/86127" },
 ] %}
 {% set datasets = [
     {
@@ -43,83 +43,6 @@
     },
 ] %}
 
-{% set organizations = [
-  {"id": "BALTO CITY COMMUNITY COLLEGE", "name": "Baltimore City Community College"},
-  {"id": "BD-MD TCHR\u0026ST EMP SUPP RET PLN", "name": "Maryland Teachers and State Employees Supplemental Retirement Plans"},
-  {"id": "BOARD OF PUBLIC WORKS", "name": "Board Of Public Works"},
-  {"id": "CANAL PLACE PRESERV \u0026 DEV AUTH", "name": "Canal Place Preservation and Development Authority"},
-  {"id": "COMPTROLLER OF MARYLAND", "name": "Comptroller of Maryland"},
-  {"id": "DEPARTMENT OF AGRICULTURE", "name": "Department of Agriculture"},
-  {"id": "DEPARTMENT OF GENERAL SERVICES", "name": "Department of General Services"},
-  {"id": "DEPARTMENT OF STATE POLICE", "name": "Department of State Police"},
-  {"id": "DEPARTMENT OF THE ENVIRONMENT", "name": "Department of the Environment"},
-  {"id": "DEPARTMENT OF TRANSPORTATION", "name": "Department of Transportation"},
-  {"id": "DEPARTMNT OF NATURAL RESOURCES", "name": "Department of Natural Resources"},
-  {"id": "DEPT HOUSING \u0026 COMMUNITY DEV", "name": "Department Housing and Community Development"},
-  {"id": "DEPT HOUSING AND COMMUNITY DEV", "name": "Department Housing and Community Development"},
-  {"id": "DEPT OF AGRICULTURE", "name": "Department of Agriculture"},
-  {"id": "DEPT OF ASSESSMENTS \u0026 TAXATION", "name": "Deparment of Assessments and Taxation"},
-  {"id": "DEPT OF BUDGET AND MANAGEMENT", "name": "Department of Budget and Management"},
-  {"id": "DEPT OF COMMERCE", "name": "Department of Commerce"},
-  {"id": "DEPT OF ENVIRONMENT", "name": "Department of Environment"},
-  {"id": "DEPT OF INFORMATION TECH", "name": "Department of Information Technology"},
-  {"id": "DEPT OF JUVENILE SERVICES", "name": "Department of Juvenile Services"},
-  {"id": "DEPT OF LABOR, LICENSING \u0026 REG", "name": "Department of Labor, Licensing and Regulation"},
-  {"id": "DEPT OF NATURAL RESOURCES", "name": "Department of Natural Resources"},
-  {"id": "DEPT OF NATURAL RESOURES", "name": "Department of Natural Resoures"},
-  {"id": "DEPT OF PUB SAFETY \u0026 COR SERV", "name": "Department of Public Safety and Correctional Services"},
-  {"id": "DEPT OF PUB SAFETY \u0026 COR SERVS", "name": "Department of Public Safety and Correctional Services"},
-  {"id": "DEPT OF THE ENVIRONMENT", "name": "Department of the Environment"},
-  {"id": "EXECUTIVE DEPARTMENT", "name": "Executive Department"},
-  {"id": "EXECUTIVE DEPT", "name": "Executive Department"},
-  {"id": "GENERAL ASSEMBLY OF MARYLAND", "name": "General Assembly of Maryland"},
-  {"id": "GOVERNOR'S OFFICE FOR CHILDREN", "name": "Governor's Office for Children"},
-  {"id": "HISTORIC ST. MARY'S CITY COMM", "name": "Historic St. Mary's City Commission"},
-  {"id": "JUDICIARY", "name": "Judiciary"},
-  {"id": "MARYLAND DEPARTMENT OF HEALTH", "name": "Maryland Department of Health"},
-  {"id": "MARYLAND HIGHER EDUCATION COMM", "name": "Maryland Higher Education Commission"},
-  {"id": "MARYLAND INSURANCE ADMIN", "name": "Insurance Administration"},
-  {"id": "MARYLAND OFFICE OF PLANNING", "name": "Office Of Planning"},
-  {"id": "MARYLAND SCHOOL FOR THE DEAF", "name": "Maryland School for the Deaf"},
-  {"id": "MARYLAND TAX COURT", "name": "Maryland Tax Court"},
-  {"id": "MARYLAND529", "name": "Maryland 529"},
-  {"id": "MD AFRICAN AMERICAN MUSEUM", "name": "Maryland African American Museum"},
-  {"id": "MD COMMISSION ON CIVIL RIGHTS", "name": "Maryland Commission On Civil Rights"},
-  {"id": "MD DEPT OF HUMAN SERVICES", "name": "Department of Human Services"},
-  {"id": "MD DEPT OF VETERANS AFFAIRS", "name": "Maryland Department of Veterans Affairs"},
-  {"id": "MD ENERGY ADMINISTRATION", "name": "State Energy Administration"},
-  {"id": "MD FOOD CENTER AUTHORITY", "name": "Maryland Food Center Authority"},
-  {"id": "MD HEALTH BENEFIT EXCHANGE", "name": "Health Benefit Exchange"},
-  {"id": "MD INS FOR EMERG MED SERV SYS", "name": "Maryland Institute for Emergency Medical Services Systems"},
-  {"id": "MD PUBLIC BROADCASTING COM", "name": "Maryland Public Broadcasting Commission"},
-  {"id": "MD ST BRD OF CONTRACT APPEALS", "name": "State Board of Contract Appeals"},
-  {"id": "MD STADIUM AUTHORITY", "name": "Maryland Stadium Authority"},
-  {"id": "MD UNINSURED EMPLOYERS' FUND", "name": "Maryland Uninsured Employers' Fund"},
-  {"id": "MILITARY DEPARTMENT", "name": "Military Department"},
-  {"id": "MORGAN STATE UNIVERSITY", "name": "Morgan State University"},
-  {"id": "OFFICE OF ADMNSTRTV HEARINGS", "name": "Office Of Administrative Hearings"},
-  {"id": "OFFICE OF PEOPLE'S COUNSEL", "name": "Office Of People's Counsel"},
-  {"id": "OFFICE OF STATE PROSECUTOR", "name": "Office of State Prosecutor"},
-  {"id": "OFFICE OF THE ATTORNEY GENERAL", "name": "Office Of the Attorney General"},
-  {"id": "OFFICE OF THE PUBLIC DEFENDER", "name": "Office of the Public Defender"},
-  {"id": "OFFICE ON AGING", "name": "Office on Aging"},
-  {"id": "PROPERTY TAX ASSMTS APPEAL BDS", "name": "Property Tax Assessment Appeals Boards"},
-  {"id": "PUBLIC SERVICE COMMISSION", "name": "Public Service Commission"},
-  {"id": "REGISTER OF WILLS", "name": "Register of Wills"},
-  {"id": "SECRETARY OF STATE", "name": "Secretary of State"},
-  {"id": "ST ADM BOARD OF ELECTION LAWS", "name": "State Board Of Elections"},
-  {"id": "ST. MARY'S COLLEGE OF MARYLAND", "name": "St. Mary's College of Maryland"},
-  {"id": "STATE ARCHIVES", "name": "State Archives"},
-  {"id": "STATE DEPARTMENT OF EDUCATION", "name": "State Department of Education"},
-  {"id": "STATE LOTTERY AGENCY", "name": "State Lottery Agency"},
-  {"id": "STATE RETIREMENT AGENCY", "name": "State Retirement Agency"},
-  {"id": "STATE TREASURER", "name": "State Treasurer"},
-  {"id": "STATE UNIVERSITIES \u0026 COLLEGES", "name": "State Universities and Colleges"},
-  {"id": "SUBSEQUENT INJURY FUND", "name": "Subsequent Injury Fund"},
-  {"id": "UNIVERSITY OF MARYLAND", "name": "University of Maryland"},
-  {"id": "WORKERS' COMPENSATION COM", "name": "Workers' Compensation Commision"},
-] %}
-
 {% block content %}
     <div class="topEarnersWrapper">
         <p class="topEarnersHead">Top Earners</p>
@@ -149,8 +72,8 @@
    <div class="filter-row">
     <div class="select-wrapper filter-op">
      <select name="_filter_value" id="agency-search">
-      {% for org in organizations|sort(attribute='name') %}
-      <option value="{{ org.id }}">{{ org.name }}</option>
+      {% for org in metadata.organizations %}
+      <option>{{ org }}</option>
       {% endfor %}
      </select>
     </div>
