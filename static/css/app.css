@@ -560,7 +560,6 @@ hr {
   position: relative;
   display: inline-block;
   width: 260px;
-  /*height:120px;*/
   height: auto;
   padding: 15px;
   margin: 10px;
@@ -853,4 +852,9 @@ a.back-btn {
 
 .l-index-block {
   margin: 50px 0 100px 0;
+  text-align: center;
+}
+
+.CodeMirror {
+  width: auto !important;
 }

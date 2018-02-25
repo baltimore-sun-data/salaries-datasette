@@ -43,6 +43,12 @@
     },
 ] %}
 
+{% block extra_head %}
+{{ super() }}
+{% include "_codemirror.html" %}
+{% endblock %}
+
+
 {% block content %}
     <div class="topEarnersWrapper">
         <p class="topEarnersHead">Top Earners</p>
@@ -62,9 +68,10 @@
   <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
       <label class="label" for="_search">Basic search:</label>
       <input id="_search" type="search" name="_search" placeholder="Name or Agency">
-      <button type="submit">Search</button>
+      <button type="submit">Go</button>
   </form>
 
+  <div class="">
   <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
    <label class="label" for="agency-search">View by organization:</label>
    <input type="hidden" name="_filter_column" value="organization">
@@ -122,9 +129,21 @@
      </select>
     </div>
     <input type="text" name="_filter_value" class="filter-value" placeholder="value" id="advanced-search">
-    <button type="submit">Query</button>
+    <button type="submit">Search</button>
    </div>
   </form>
+
+  <form class="dbsearch" action="/salaries" method="get">
+    <label class="label" for="sql-query">SQL Query:</label>
+    <textarea name="sql" id="sql-query">
+SELECT organization, SUM(ytd_gross_earnings) as total
+FROM [2017 Maryland state salaries]
+GROUP BY organization
+ORDER BY total DESC
+    </textarea>
+    <button type="submit">Query</button>
+  </form>
+  </div>
 </section>
 
 <section class="l-index-block">
@@ -152,4 +171,6 @@
     </li>
   </ul>
 </section>
+
+{% include "_codemirror_foot.html" %}
 {% endblock %}
