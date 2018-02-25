@@ -16,16 +16,14 @@
 {% block body_class %}table db-{{ database|to_css_class }} table-{{ table|to_css_class }}{% endblock %}
 
 {% block content %}
-<!--<div class="hd"><a href="/">home</a> / <a href="/{{ database }}-{{ database_hash }}">{{ database }}</a></div>-->
-
-{% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
 
 <form class="filters" action="/{{ database }}-{{ database_hash }}/{{ table|quote_plus }}" method="get">
+
     {% if supports_search %}
         <div class="dbsearch search-table"><label for="_search">Search:</label><input id="_search" type="search" name="_search" value="{{ search }}"></div>
     {% endif %}
     {% for column, lookup, value in filters.selections() %}
-        <div class="filter-row">
+        <div class="dbsearch filter-row">
             <div class="select-wrapper">
                 <select name="_filter_column_{{ loop.index }}">
                     <option value="">- remove filter -</option>
@@ -44,7 +42,7 @@
     {% endfor %}
     <div class="dbsearch filter-row">
         <div class="select-wrapper">
-            Filter: 
+            Filter:
             <select name="_filter_column">
                 <option value="">- column -</option>
                 {% for column in filter_columns %}
@@ -53,16 +51,23 @@
                     {% endif %}
                 {% endfor %}
             </select>
-        </div><div class="select-wrapper filter-op">
+        </div>
+        <div class="select-wrapper filter-op">
             <select name="_filter_op">
                 {% for key, display, no_argument in filters.lookups() %}
-                    <option value="{{ key }}{% if no_argument %}__1{% endif %}"{% if key == lookup %} selected{% endif %}>{{ display }}</option>
+                    <option value="{{ key }}{% if no_argument %}__1{% endif %}"{% if key == lookup %} selected{% endif %}>
+                        {{- display -}}
+                    </option>
                 {% endfor %}
             </select>
-        </div><input type="text" name="_filter_value" class="filter-value">
+        </div>
+        <input type="text" name="_filter_value" class="filter-value">
         <input type="submit" value="{% if filters.has_selections() %}Apply filters{% else %}Add filter{% endif %}">
     </div>
-    <div class="dbsearch"><a class="button back-btn" href="/">Back to main search</a></div>
+
+    <div class="dbsearch">
+        <a class="button back-btn" href="/">Back to main search</a>
+    </div>
 </form>
 
 {% if filtered_table_rows or human_filter_description %}
