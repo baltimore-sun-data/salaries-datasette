@@ -67,7 +67,7 @@
 <section class="l-index-block l-index-block__centered">
   <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
       <label class="label" for="_search">Basic search:</label>
-      <input id="_search" type="search" name="_search" placeholder="Name or Agency">
+      <input id="_search" type="search" name="_search" placeholder="Name or organization">
       <button type="submit">Go</button>
   </form>
 
@@ -135,12 +135,10 @@
 
   <form class="dbsearch" action="/salaries" method="get">
     <label class="label" for="sql-query">SQL Query:</label>
-    <textarea name="sql" id="sql-query">
-SELECT organization, SUM(ytd_gross_earnings) as total
+    <textarea name="sql" id="sql-query">SELECT organization, SUM(ytd_gross_earnings) as total
 FROM [2017 Maryland state salaries]
 GROUP BY organization
-ORDER BY total DESC
-    </textarea>
+ORDER BY total DESC</textarea>
     <button type="submit">Query</button>
   </form>
   </div>
@@ -148,7 +146,7 @@ ORDER BY total DESC
 
 <section class="l-index-block">
   <p>
-    In an effort to bring greater transparency to government spending, <i>The Baltimore Sun</i> has been committed to publishing public salary databases since 2009.
+    In an effort to bring greater transparency to government spending, <em>The Baltimore Sun</em> has been committed to publishing public salary records since 2009. See our <a href="http://www.baltimoresun.com/bal-maryland-state-salary-database-faq-20110524-story.html">FAQ</a> for more information.
   </p>
   <p>
     The Office of the Maryland Comptroller has rounded the salaries and gross pays to the nearest thousand to prevent tax fraud attempts on state employees. As a result, some figures have been rounded down to zero.
