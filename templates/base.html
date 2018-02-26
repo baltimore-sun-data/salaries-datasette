@@ -20,18 +20,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Start: GPT Async -->
+    <script src="/static/js/social-buttons.js" async></script>
     <script type='text/javascript'>
       var gptadslots = [];
       var googletag = googletag || {};
       googletag.cmd = googletag.cmd || [];
-      (function(){ var gads = document.createElement('script');
-      gads.async = true; gads.type = 'text/javascript';
-      var useSSL = 'https:' == document.location.protocol;
-      gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-      var node = document.getElementsByTagName('script')[0];
-      node.parentNode.insertBefore(gads, node);
-      })();
     </script>
+    <script src="//www.googletagservices.com/tag/js/gpt.js" async></script>
     <script>
         ((((window.trb || (window.trb = {})).data || (trb.data = {})).metrics || (trb.data.metrics = {})).thirdparty = {
             pageName: 'bs:dataproject:news:maryland:salary-2107:dataproject.',
@@ -90,8 +85,8 @@
         <a href="/salaries?sql=select+*+from+%5B2017+Maryland+state+salaries%5D+order+by+ytd_gross_earnings+desc+limit+50">Top Earners</a>
       </span>
       <div id="share-tools">
-        <span class="icon-facebook"></span>
-        <span class="icon-twitter"></span>
+        <span class="icon-facebook js-click"></span>
+        <span class="icon-twitter js-click" data-share-text="See public employee salaries with the Maryland Salary Database from the Baltimore Sun"></span>
       </div>
   </nav>
 
