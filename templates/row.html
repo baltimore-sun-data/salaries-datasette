@@ -1,109 +1,38 @@
 {% extends "base.html" %}
 
-{% block title %}{{ database }}: {{ table }}{% endblock %}
+{% block title %}{{ table }}{% endblock %}
 
-{% block extra_head %}
-{{ super() }}
-<style>
-@media only screen and (max-width: 576px) {
-{% for column in columns %}
-    td:nth-of-type({{ loop.index }}):before { content: "{{ column|escape_css_string }}"; }
-{% endfor %}
-}
-</style>
-{% endblock %}
-
-{% block body_class %}row db-{{ database|to_css_class }} table-{{ table|to_css_class }}{% endblock %}
 {% block content %}
-{% block description_source_license %}{% include "_description_source_license.html" %}{% endblock %}
+<main id="salary-content">
+    <div class="table-wrapper table-wrapper__row-view">
+    <table class="dbresults">
     {% for row in display_rows %}
-            {% for cell in row %}
-                {% if cell.column == 'Link' %}
-                    <div>
-                        <span>Link</span>: <span>{{ cell.value }}</span>
-                    </div>
+            {% for cell in row if not cell.column == 'rowid' %}
+            <tr>
+                <th>{{ col_name[cell.column] | default(cell.column) }}</th>
+                {% if cell.column in numeric_cols %}
+                    <td class="col-left">{{ "${:,.2f}".format(cell.value|float) }}</td>
+                {% else %}
+                    <td class="col-left">{{ cell.value }}</td>
                 {% endif %}
-                {% if cell.column == 'first_name' %}
-                    <div>
-                        <span>First name</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'middle_initial' %}
-                    <div>
-                        <span>Middle initial</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'last_name' %}
-                    <div>
-                        <span>Last name</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'suffix' %}
-                    <div>
-                        <span>Suffix</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'system' %}
-                    <div>
-                        <span>Pay system (CT, RG or UM)†</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'organization' %}
-                    <div>
-                        <span>Organization</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'subtitle' %}
-                    <div>
-                        <span>Organization - Subtitle</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'agency' %}
-                    <div>
-                        <span>Agency number</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'class_code' %}
-                    <div>
-                        <span>Classification code</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'pay_rate' %}
-                    <div>
-                        <span>Pay rate</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'annual_salary' %}
-                    <div>
-                        <span>Annual salary</span>: <span>{{ "${:,.2f}".format(cell.value|float) }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'regular_earnings' %}
-                    <div>
-                        <span>Regular earnings</span>: <span>{{ "${:,.2f}".format(cell.value|float) }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'overtime_earnings' %}
-                    <div>
-                        <span>Overtime earnings</span>: <span>{{ "${:,.2f}".format(cell.value|float) }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'other_earnings' %}
-                    <div>
-                        <span>Other earnings</span>: <span>{{ "${:,.2f}".format(cell.value|float) }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'term_date' %}
-                    <div>
-                        <span>Term date</span>: <span>{{ cell.value }}</span>
-                    </div>
-                {% endif %}
-                {% if cell.column == 'ytd_gross_earnings' %}
-                    <div>
-                        <span>YTD gross earnings</span>: <span>{{ "${:,.2f}".format(cell.value|float) }}</span>
-                    </div>
-                {% endif %}
+            </tr>
             {% endfor %}
     {% endfor %}
+    </table>
+    </div>
+
+    <h2>Notes</h2>
+
+    <p>In system, RG, UM, and CT signify pay types for regular, University of Maryland, and contract workers, respectively.</p>
+
+    <p>For the meaning of agency and classification codes see the <a href="http://dbm.maryland.gov/employees/Pages/SalaryPlan.aspx">Maryland Department of Budget and Management website</a>.</p>
+
+    <p>The salary/pay scale refers to either an hourly rate (H), daily rate (D), or certified annual salary (A). In certain situations, state data did not include rates of pay or payout numbers for certain hourly workers.</p>
+
+    <p>&ldquo;2017 gross earnings&rdquo; reflects compensation before any pre-tax deductions are removed.</p>
+
+    <p>Termination date is the date that an employee was last terminated. In certain cases, an employee may be rehired after initial termination, resulting in an active employee with a recorded termination date.</p>
+</main>
+
     <div class="dbsearch"><a class="button back-btn" href="/">Back to main search</a></div>
 {% endblock %}

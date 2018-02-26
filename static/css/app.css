@@ -596,9 +596,14 @@ th {
 .fldtypetwo {
   display: none;
 }
+
 .table-wrapper {
   overflow-x: scroll;
   width: 100%;
+}
+
+.table-wrapper.table-wrapper__row-view .dbresults {
+  display: inline-block;
 }
 
 .dbresults {
@@ -622,6 +627,18 @@ th {
 }
 .dbresults thead {
   font-weight: 900;
+}
+
+.dbresults .col-left {
+  text-align: left;
+}
+
+.dbresults .col-center {
+  text-align: center;
+}
+
+.dbresults .col-right {
+  text-align: right;
 }
 
 #salary-content {
