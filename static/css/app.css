@@ -585,7 +585,8 @@ hr {
 .dbsearch .label {
   min-height: 30px;
 }
-th, td {
+th,
+td {
   padding: 5px;
 }
 th {
@@ -750,7 +751,7 @@ a.back-btn {
   height: 90px;
 }
 
-@media (max-width: 750px){
+@media (max-width: 750px) {
   #ad-slot {
     width: 320px;
     height: 250px;
@@ -868,6 +869,14 @@ a.back-btn {
   text-align: center;
 }
 
-.CodeMirror {
-  width: auto !important;
+#salary-content .CodeMirror {
+  border: 1px solid #ddd;
+  font-weight: normal;
+  height: auto;
+  min-height: 70px;
+  width: auto;
+}
+
+#salary-content .CodeMirror-scroll {
+  max-height: 200px;
 }
