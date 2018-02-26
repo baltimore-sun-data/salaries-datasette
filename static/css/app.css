@@ -291,18 +291,20 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
-  width: 100%;
-  color: #ccf3e7;
-  display: inline-block;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-  line-height: normal;
-  padding: 8px 10px;
-  font-family: "Lato", Helvetica, Arial, sans-serif;
-  border: 1px solid #ccf3e7;
-  border-radius: 5px;
   background-color: #3c9076;
+  border-radius: 5px;
+  border: 1px solid #ccf3e7;
+  box-sizing: border-box ;
+  color: #ccf3e7;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  line-height: normal;
+  margin-bottom: 5px;
+  padding: 8px 10px;
+  text-decoration: none;
+  width: 100%;
 }
 
 .button:hover,
@@ -844,4 +846,8 @@ a.back-btn {
 
 #salary-content .CodeMirror-scroll {
   max-height: 200px;
+}
+
+a.button {
+  color: inherit;
 }

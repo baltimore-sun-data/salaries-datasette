@@ -43,12 +43,6 @@
     },
 ] %}
 
-{% block extra_head %}
-{{ super() }}
-{% include "_codemirror.html" %}
-{% endblock %}
-
-
 {% block content %}
     <div class="topEarnersWrapper">
         <p class="topEarnersHead">Top Earners</p>
@@ -72,75 +66,85 @@
   </form>
 
   <div class="">
-  <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
-   <label class="label" for="agency-search">View by organization:</label>
-   <input type="hidden" name="_filter_column" value="organization">
-   <input type="hidden" name="_filter_op" value="exact">
-   <div class="filter-row">
-    <div class="select-wrapper filter-op">
-     <select name="_filter_value" id="agency-search">
-      {% for org in metadata.organizations %}
-      <option>{{ org }}</option>
-      {% endfor %}
-     </select>
-    </div>
-    <button type="submit">View</button>
-   </div>
-  </form>
+    <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
+     <label class="label" for="agency-search">View by organization:</label>
+     <input type="hidden" name="_filter_column" value="organization">
+     <input type="hidden" name="_filter_op" value="exact">
+     <div class="filter-row">
+      <div class="select-wrapper filter-op">
+       <select name="_filter_value" id="agency-search">
+        {% for org in metadata.organizations %}
+        <option>{{ org }}</option>
+        {% endfor %}
+       </select>
+      </div>
+      <button type="submit">View</button>
+     </div>
+    </form>
 
-  <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
-   <label class="label" for="advanced-search">Advanced search:</label>
+    <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
+     <label class="label" for="advanced-search">Advanced search:</label>
 
-   <div class="filter-row">
-    <div class="select-wrapper">
-     <select name="_filter_column">
-      <option value="">- column -</option>
-      <option value="first_name">first name</option>
-      <option value="middle_initial">middle initial</option>
-      <option value="last_name">last name</option>
-      <option value="suffix">suffix</option>
-      <option value="system">system</option>
-      <option value="organization">organization</option>
-      <option value="subtitle">subtitle</option>
-      <option value="agency">agency</option>
-      <option value="class_code">class code</option>
-      <option value="pay_rate">pay rate</option>
-      <option value="ytd_gross_earnings">2017 gross earnings</option>
-      <option value="annual_salary">annual salary</option>
-      <option value="regular_earnings">regular earnings</option>
-      <option value="overtime_earnings">overtime earnings</option>
-      <option value="other_earnings">other earnings</option>
-      <option value="term_date">termination date</option>
-     </select>
-    </div>
-    <div class="select-wrapper filter-op">
-     <select name="_filter_op">
-      <option value="exact">=</option>
-      <option value="not">&ne;</option>
-      <option value="contains">contains</option>
-      <option value="endswith">ends with</option>
-      <option value="startswith">starts with</option>
-      <option value="gt">&gt;</option>
-      <option value="gte">≥</option>
-      <option value="lt">&lt;</option>
-      <option value="lte">≤</option>
-      <option value="glob">glob</option>
-      <option value="like">like</option>
-     </select>
-    </div>
-    <input type="text" name="_filter_value" class="filter-value" placeholder="value" id="advanced-search">
-    <button type="submit">Search</button>
-   </div>
-  </form>
+     <div class="filter-row">
+      <div class="select-wrapper">
+       <select name="_filter_column">
+        <option value="">- column -</option>
+        <option value="first_name">first name</option>
+        <option value="middle_initial">middle initial</option>
+        <option value="last_name">last name</option>
+        <option value="suffix">suffix</option>
+        <option value="system">system</option>
+        <option value="organization">organization</option>
+        <option value="subtitle">subtitle</option>
+        <option value="agency">agency</option>
+        <option value="class_code">class code</option>
+        <option value="pay_rate">pay rate</option>
+        <option value="ytd_gross_earnings">2017 gross earnings</option>
+        <option value="annual_salary">annual salary</option>
+        <option value="regular_earnings">regular earnings</option>
+        <option value="overtime_earnings">overtime earnings</option>
+        <option value="other_earnings">other earnings</option>
+        <option value="term_date">termination date</option>
+       </select>
+      </div>
+      <div class="select-wrapper filter-op">
+       <select name="_filter_op">
+        <option value="exact">=</option>
+        <option value="not">&ne;</option>
+        <option value="contains">contains</option>
+        <option value="endswith">ends with</option>
+        <option value="startswith">starts with</option>
+        <option value="gt">&gt;</option>
+        <option value="gte">≥</option>
+        <option value="lt">&lt;</option>
+        <option value="lte">≤</option>
+        <option value="glob">glob</option>
+        <option value="like">like</option>
+       </select>
+      </div>
+      <input type="text" name="_filter_value" class="filter-value" placeholder="value" id="advanced-search">
+      <button type="submit">Search</button>
+     </div>
+    </form>
 
-  <form class="dbsearch" action="/salaries" method="get">
-    <label class="label" for="sql-query">SQL Query:</label>
-    <textarea name="sql" id="sql-query">SELECT organization, SUM(ytd_gross_earnings) as total
-FROM [2017 Maryland state salaries]
-GROUP BY organization
-ORDER BY total DESC</textarea>
-    <button type="submit">Query</button>
-  </form>
+    <div class="dbsearch">
+      <label class="label">Complex Queries</label>
+      <a
+        class="button"
+        href="/salaries?sql=SELECT+organization%2C+SUM%28ytd_gross_earnings%29+as+ytd_gross_earnings%0D%0AFROM+%5B2017+Maryland+state+salaries%5D%0D%0AGROUP+BY+organization%0D%0AORDER+BY+ytd_gross_earnings+DESC">
+        Earnings by organization
+      </a>
+      <a
+        class="button"
+        href="/salaries?sql=select+organization%2C+first_name%2C+last_name%2C+max%28ytd_gross_earnings%29+as+ytd_gross_earnings%0D%0Afrom+%5B2017+Maryland+state+salaries%5D%0D%0Agroup+by+organization%0D%0Aorder+by+ytd_gross_earnings+desc">
+        Highest paid in organization
+      </a>
+      <a
+        class="button"
+        href="/salaries?sql=SELECT+organization%2C+AVG%28annual_salary%29+as+annual_salary%0D%0AFROM+%5B2017+Maryland+state+salaries%5D%0D%0AGROUP+BY+organization%0D%0AORDER+BY+annual_salary+DESC">
+        Average salary per organization
+      </a>
+    </div>
   </div>
 </section>
 
@@ -169,6 +173,4 @@ ORDER BY total DESC</textarea>
     </li>
   </ul>
 </section>
-
-{% include "_codemirror_foot.html" %}
 {% endblock %}
