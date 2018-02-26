@@ -1,17 +1,9 @@
 {% extends "base.html" %}
-{% block title %}{{ database }}: {{ table }}: {% if filtered_table_rows or filtered_table_rows == 0 %}{{ "{:,}".format(filtered_table_rows) }} row{% if filtered_table_rows == 1 %}{% else %}s{% endif %}{% endif %}
-    {% if human_filter_description %}where {{ human_filter_description }}{% endif %}{% endblock %}
-
-{% block extra_head %}
-{{ super() }}
-<style>
-@media only screen and (max-width: 576px) {
-{% for column in display_columns %}
-    td:nth-of-type({{ loop.index }}):before { content: "{{ column|escape_css_string }}"; }
-{% endfor %}
-}
-</style>
+{% block title %}
+    {{- table -}}
+    {% if human_filter_description %} where {{ human_filter_description }}{% endif -%}
 {% endblock %}
+
 
 {% block body_class %}table db-{{ database|to_css_class }} table-{{ table|to_css_class }}{% endblock %}
 
@@ -70,14 +62,14 @@
     </div>
 </form>
 
+{% include custom_rows_and_columns_templates %}
+
 {% if filtered_table_rows or human_filter_description %}
     <p>{% if filtered_table_rows or filtered_table_rows == 0 %}{{ "{:,}".format(filtered_table_rows) }} row{% if filtered_table_rows == 1 %}{% else %}s{% endif %}{% endif %}
         {% if human_filter_description %}where {{ human_filter_description }}{% endif %}
     </p>
 {% endif %}
-<p>This data as <a href="{{ url_json }}">.json</a>, <a href="{{ url_jsono }}">.jsono</a></p>
 
-{% include custom_rows_and_columns_templates %}
 {% if next_url %}
      <p><a href="{{ next_url }}">Next page</a></p>
 {% endif %}

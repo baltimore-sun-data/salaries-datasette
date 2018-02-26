@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ database }}{% if query and query.sql %}{{ query.sql }}{% endif %}{% endblock %}
+{% block title %}Custom SQL query{% endblock %}
 
 {% block extra_head %}
 {{ super() }}
@@ -12,28 +12,32 @@
 {% block content %}
 
 {% if rows %}
-<div class="table-wrapper">
-<table class="dbresults">
-    <thead>
-        <tr>
-            {% for column in columns %}<th scope="col">{{ column }}</th>{% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-    {% for row in rows %}
-        <tr>
-            {% for td in row %}
-                <td>{% if td == None %}{{ "&nbsp;"|safe }}{% else %}{{ td }}{% endif %}</td>
+    <div class="table-wrapper">
+    <table class="dbresults">
+        <thead>
+            <tr>
+            {% for column in columns %}
+                <th scope="col">
+                    {{ col_name[column] | default(column) }}
+                </th>
             {% endfor %}
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-</div>
-
-<p>
-    Get this data as <a href="{{ url_json }}">.json</a> or <a href="{{ url_jsono }}">.jsono</a>.
-</p>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            <tr class="fancyfloat">
+                {% for cell in row %}
+                    {% if columns[loop.index0] in numeric_cols %}
+                        <td class="col-right">{{ "${:,.2f}".format(cell|float) }}</td>
+                    {% else %}
+                        <td class="">{{ cell if cell else '' }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
 {% endif %}
 
 <form class="sql" action="/{{ database }}-{{ database_hash }}{% if canned_query %}/{{ canned_query }}{% endif %}" method="get">
