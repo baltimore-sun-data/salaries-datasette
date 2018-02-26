@@ -4,6 +4,27 @@
     "description": "",
     "imageURL": "",
 } -%}
+{%- set col_name = {
+    'agency': 'Agency code',
+    'annual_salary': 'Annual salary',
+    'class_code': 'Class code',
+    'first_name': 'First Name',
+    'last_name': 'Last Name',
+    'middle_initial': 'Middle Initial',
+    'organization': 'Organization',
+    'other_earnings': 'Other earnings',
+    'overtime_earnings': 'Overtime',
+    'pay_rate': 'Pay rate',
+    'regular_earnings': 'Regular earnings',
+    'subtitle': 'Subtitle',
+    'suffix': 'Suffix',
+    'system': 'System',
+    'term_date': 'Termination date',
+    'ytd_gross_earnings': '2017 Gross Earnings',
+} -%}
+{%- set numeric_cols = [
+    'annual_salary', 'other_earnings', 'overtime_earnings', 'regular_earnings', 'ytd_gross_earnings'
+] -%}
 {%-  set url = url_json | default("/") | replace(".json", "") -%}
 <!DOCTYPE html>
 <html>
