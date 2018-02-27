@@ -560,8 +560,24 @@ th {
 }
 
 .table-wrapper {
-  overflow-x: scroll;
+  overflow-x: auto;
   width: 100%;
+}
+
+@media (max-width: 500px) {
+  .table-wrapper th {
+    display: none;
+  }
+
+  .table-wrapper td {
+      display: block;
+      text-align: left !important;
+  }
+
+  .table-wrapper td:before {
+    content: attr(data-col)": ";
+    font-weight: bold;
+  }
 }
 
 .table-wrapper.table-wrapper__row-view .dbresults {
@@ -733,23 +749,24 @@ a.back-btn {
 
 @media (max-width: 750px) {
   #ad-slot {
-    width: 320px;
     height: 250px;
+    overflow: hidden;
+    width: 320px;
   }
 }
 
-.rowid,
-.suffix,
-.system,
-.subtitle,
-.agency,
-.class_code,
-.pay_rate,
-.annual_salary,
-.regular_earnings,
-.overtime_earnings,
-.other_earnings,
-.term_date {
+.table-wrapper .rowid,
+.table-wrapper .suffix,
+.table-wrapper .system,
+.table-wrapper .subtitle,
+.table-wrapper .agency,
+.table-wrapper .class_code,
+.table-wrapper .pay_rate,
+.table-wrapper .annual_salary,
+.table-wrapper .regular_earnings,
+.table-wrapper .overtime_earnings,
+.table-wrapper .other_earnings,
+.table-wrapper .term_date {
   display: none;
 }
 

@@ -14,9 +14,9 @@
         <tr class="fancyfloat">
             {% for cell in row %}
                 {% if cell.column in numeric_cols %}
-                    <td class="col-right {{cell.column}}">{{ "${:,.2f}".format(cell.value|float) }}</td>
+                    <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="col-right {{cell.column}}">{{ "${:,.2f}".format(cell.value|float) }}</td>
                 {% else %}
-                    <td class="{{cell.column}}">{{ cell.value }}</td>
+                    <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="{{cell.column}}">{{ cell.value }}</td>
                 {% endif %}
             {% endfor %}
         </tr>

@@ -27,10 +27,11 @@
         {% for row in rows %}
             <tr class="fancyfloat">
                 {% for cell in row %}
-                    {% if columns[loop.index0] in numeric_cols %}
-                        <td class="col-right">{{ "${:,.2f}".format(cell|float) }}</td>
+                    {% set col = columns[loop.index0] %}
+                    {% if col in numeric_cols %}
+                        <td data-col="{{ col_name[col] | default(col) }}" class="col-right">{{ "${:,.2f}".format(cell|float) }}</td>
                     {% else %}
-                        <td class="">{{ cell if cell else '' }}</td>
+                        <td data-col="{{ col_name[col] | default(col) }}" class="">{{ cell if cell else '' }}</td>
                     {% endif %}
                 {% endfor %}
             </tr>
