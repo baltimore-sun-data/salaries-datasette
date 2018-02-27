@@ -1,3 +1,7 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -262,13 +266,12 @@ hr {
 ================================================== */
 a,
 a:visited {
-  color: #333;
-  text-decoration: underline;
+  color: inherit;
   outline: 0;
 }
 a:hover,
 a:focus {
-  color: #000;
+  text-decoration: underline;
 }
 p a,
 p a:visited {
@@ -294,7 +297,6 @@ input[type="button"] {
   background-color: #3c9076;
   border-radius: 5px;
   border: 1px solid #ccf3e7;
-  box-sizing: border-box ;
   color: #ccf3e7;
   cursor: pointer;
   display: inline-block;
@@ -313,6 +315,7 @@ input[type="submit"]:hover,
 input[type="reset"]:hover,
 input[type="button"]:hover {
   background-color: #9ee6d0;
+  text-decoration: none;
 }
 
 .button.full-width,
@@ -425,13 +428,19 @@ legend span {
   text-decoration: none;
   color: white;
 }
+
 #popsearches a {
   padding-left: 10px;
   padding-right: 10px;
   border-right: 1px solid #ececec;
 }
+
 #popsearches a:last-child {
   border-right: 0px none;
+}
+
+#popsearches a:hover {
+  text-decoration: underline;
 }
 
 .topEarnersWrapper {
@@ -527,7 +536,7 @@ hr {
 .dbsearch input[type="search"],
 .rangeselector input[type="text"],
 .rangeselector input[type="search"] {
-  width: 98%;
+  width: 100%;
   padding: 5px 0 5px 5px;
   margin-bottom: 10px;
   border: none;
@@ -592,7 +601,6 @@ th {
 }
 
 #salary-content {
-  box-sizing: border-box;
   float: none;
   margin: 0 auto;
   max-width: 100%;
@@ -616,6 +624,10 @@ th {
 #salary-content .title a {
   color: inherit;
   text-decoration: none;
+}
+
+#salary-content .title a:hover {
+  text-decoration: underline;
 }
 
 .realmin,
@@ -712,7 +724,6 @@ a.back-btn {
 
 #ad-slot {
   background-color: #ccc;
-  box-sizing: border-box;
   margin: 0 auto 20px auto;
   width: 728px;
   height: 90px;
@@ -848,6 +859,23 @@ a.back-btn {
   max-height: 200px;
 }
 
-a.button {
-  color: inherit;
+#salary-content .choices {
+  color: #3c9076;
+  word-break: break-word;
+  text-align: left;
+}
+.choices__list--multiple .choices__item {
+
+}
+
+#salary-content .choices__list--dropdown {
+  word-break: break-word;
+}
+
+#salary-content .choices__item + .choices__item {
+  border-top: 1px solid #DDDDDD;
+}
+
+#salary-content .choices__list--dropdown .choices__item--selectable {
+  padding-right: 10px;
 }
