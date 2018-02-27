@@ -1,4 +1,6 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -870,7 +872,7 @@ a.back-btn {
 }
 
 #salary-content .choices__item + .choices__item {
-  border-top: 1px solid #DDDDDD;
+  border-top: 1px solid #dddddd;
 }
 
 #salary-content .choices__list--dropdown .choices__item--selectable {
