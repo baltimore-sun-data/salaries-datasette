@@ -20,16 +20,22 @@
                 <select name="_filter_column_{{ loop.index }}">
                     <option value="">- remove filter -</option>
                     {% for c in filter_columns %}
-                          <option{% if c == column %} selected{% endif %}>{{ c }}</option>
+                          <option
+                            {% if c == column %}selected{% endif %}
+                            value="{{ c }}">{{ col_name[c] | default(c) }}</option>
                     {% endfor %}
                 </select>
-            </div><div class="select-wrapper filter-op">
+            </div>
+            <div class="select-wrapper filter-op">
                 <select name="_filter_op_{{ loop.index }}">
                     {% for key, display, no_argument in filters.lookups() %}
-                        <option value="{{ key }}{% if no_argument %}__1{% endif %}"{% if key == lookup %} selected{% endif %}>{{ display }}</option>
+                        <option
+                            value="{{ key }}{% if no_argument %}__1{% endif %}"
+                            {% if key == lookup %}selected{% endif %}>{{ display }}</option>
                     {% endfor %}
                 </select>
-            </div><input type="text" name="_filter_value_{{ loop.index }}" class="filter-value" value="{{ value }}">
+            </div>
+            <input type="text" name="_filter_value_{{ loop.index }}" class="filter-value" value="{{ value }}">
         </div>
     {% endfor %}
     <div class="dbsearch filter-row">
@@ -37,17 +43,17 @@
             Filter:
             <select name="_filter_column">
                 <option value="">- column -</option>
-                {% for column in filter_columns %}
-                    {% if column in ("first_name", "last_name", "organization", "agency", "class_code", "ytd_gross_earnings", "annual_salary", "regular_earnings", "overtime_earnings", "other_earnings", "term_date") %}
-                      <option>{{ column }}</option>
-                    {% endif %}
+                {% for c in filter_columns %}
+                      <option value="{{ c }}">{{ col_name[c] | default(c) }}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="select-wrapper filter-op">
             <select name="_filter_op">
                 {% for key, display, no_argument in filters.lookups() %}
-                    <option value="{{ key }}{% if no_argument %}__1{% endif %}"{% if key == lookup %} selected{% endif %}>
+                    <option
+                        value="{{ key }}{% if no_argument %}__1{% endif %}"
+                        {% if key == lookup %}selected{% endif %}>
                         {{- display -}}
                     </option>
                 {% endfor %}
