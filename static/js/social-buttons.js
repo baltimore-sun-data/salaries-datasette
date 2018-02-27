@@ -9,7 +9,6 @@ window.addEventListener("load", function() {
   document
     .querySelectorAll(".icon-twitter.js-click")
     .addEventListener("click", function(e) {
-      // debugger;
       var tweet = e.target.getAttribute("data-share-text");
       var url = window.location.href; // Interactive URL
 
