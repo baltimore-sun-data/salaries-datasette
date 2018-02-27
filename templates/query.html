@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Custom SQL query{% endblock %}
+{% block title %}{{ canned_query.replace("-", " ").title() if canned_query else "Custom SQL query" }}{% endblock %}
 
 {% block extra_head %}
 {{ super() }}
@@ -10,6 +10,10 @@
 {% block body_class %}query db-{{ database|to_css_class }}{% endblock %}
 
 {% block content %}
+
+{% if canned_query %}
+<h2 class="title">{{ canned_query.replace("-", " ").title() }}</h2>
+{% endif %}
 
 {% if rows %}
     <div class="table-wrapper">
@@ -41,7 +45,8 @@
     </div>
 {% endif %}
 
-<form class="sql" action="/{{ database }}-{{ database_hash }}{% if canned_query %}/{{ canned_query }}{% endif %}" method="get">
+{% if not canned_query %}
+<form class="sql" action="/{{ database }}-{{ database_hash }}" method="get">
     <h3>Custom SQL query{% if rows %} returning {% if truncated %}more than {% endif %}{{ "{:,}".format(rows|length) }} row{% if rows|length == 1 %}{% else %}s{% endif %}{% endif %}</h3>
     {% if editable %}
         <p><textarea name="sql">{% if query and query.sql %}{{ query.sql }}{% else %}select * from {{ tables[0].name|escape_table_name }}{% endif %}</textarea></p>
@@ -56,6 +61,7 @@
     {% endif %}
     <p><input type="submit" value="Run SQL"></p>
 </form>
+{% endif %}
 
 {% include "_codemirror_foot.html" %}
 
