@@ -42,7 +42,24 @@
       "csv": "/static/csv/cy2012-md.csv",
     },
 ] %}
-
+{% set complex_queries = [
+  {
+    "name": "Earnings by organization",
+    "query": "SELECT organization, SUM(ytd_gross_earnings) as ytd_gross_earnings FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY ytd_gross_earnings DESC",
+  },
+  {
+    "name": "Highest paid in organization",
+    "query": "SELECT organization, first_name, last_name, MAX(ytd_gross_earnings) as ytd_gross_earnings FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY ytd_gross_earnings DESC",
+  },
+  {
+    "name": "Average salary per organization",
+    "query": "SELECT organization, AVG(annual_salary) as annual_salary FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY annual_salary DESC",
+  },
+  {
+    "name": "Number of employees in organization",
+    "query": "SELECT organization, pay_rate, count(*) AS Employees FROM [2017 Maryland state salaries] GROUP BY organization, pay_rate ORDER BY pay_rate ASC, Employees DESC",
+  },
+] %}
 {%block extra_head %}
   <link rel="stylesheet" type="text/css" href="/static/css/choices.min.css">
 {% endblock %}
@@ -133,21 +150,13 @@
 
     <div class="dbsearch">
       <label class="label">Complex Queries</label>
+      {% for query in complex_queries %}
       <a
         class="button"
-        href="/salaries?sql=SELECT+organization%2C+SUM%28ytd_gross_earnings%29+as+ytd_gross_earnings%0D%0AFROM+%5B2017+Maryland+state+salaries%5D%0D%0AGROUP+BY+organization%0D%0AORDER+BY+ytd_gross_earnings+DESC">
-        Earnings by organization
+        href="/salaries?sql={{query.query|urlencode}}">
+        {{ query.name }}
       </a>
-      <a
-        class="button"
-        href="/salaries?sql=select+organization%2C+first_name%2C+last_name%2C+max%28ytd_gross_earnings%29+as+ytd_gross_earnings%0D%0Afrom+%5B2017+Maryland+state+salaries%5D%0D%0Agroup+by+organization%0D%0Aorder+by+ytd_gross_earnings+desc">
-        Highest paid in organization
-      </a>
-      <a
-        class="button"
-        href="/salaries?sql=SELECT+organization%2C+AVG%28annual_salary%29+as+annual_salary%0D%0AFROM+%5B2017+Maryland+state+salaries%5D%0D%0AGROUP+BY+organization%0D%0AORDER+BY+annual_salary+DESC">
-        Average salary per organization
-      </a>
+      {% endfor %}
     </div>
   </div>
 </section>
