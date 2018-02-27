@@ -1,4 +1,11 @@
 {
+    "databases": {
+        "salaries": {
+            "queries": {
+                "top-earners": "select first_name, last_name, organization, subtitle, ytd_gross_earnings from [2017 Maryland state salaries] order by ytd_gross_earnings desc limit 50"
+            }
+        }
+    },
     "organizations": [
         "Baltimore City Community College",
         "Board of Public Works",
