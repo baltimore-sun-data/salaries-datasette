@@ -565,16 +565,16 @@ th {
 }
 
 @media (max-width: 500px) {
-  .table-wrapper th {
+  .table-wrapper__responsive th {
     display: none;
   }
 
-  .table-wrapper td {
+  .table-wrapper__responsive td {
       display: block;
       text-align: left !important;
   }
 
-  .table-wrapper td:before {
+  .table-wrapper__responsive td:before {
     content: attr(data-col)": ";
     font-weight: bold;
   }
