@@ -44,4 +44,20 @@ window.addEventListener("load", function() {
       );
       return false;
     });
+
+  // Make rows clickable
+  document
+    .querySelectorAll(".dbresults.js-click tbody")
+    .addEventListener("click", function(e) {
+      if (e.target.closest("table").classList.contains("hide-columns")) {
+        window.location = e.target.closest("tr").querySelector("a").href;
+      }
+    });
+
+  // Toggle extra columns
+  document
+    .querySelectorAll(".dbresults.js-click thead")
+    .addEventListener("click", function(e) {
+      e.target.closest("table").classList.toggle("hide-columns");
+    });
 });
