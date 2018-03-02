@@ -6,8 +6,6 @@ NodeList.prototype.addEventListener = function(event, func) {
 };
 
 window.addEventListener("load", function() {
-  document.body.classList.add("js-active");
-
   document
     .querySelectorAll(".icon-twitter.js-click")
     .addEventListener("click", function(e) {
