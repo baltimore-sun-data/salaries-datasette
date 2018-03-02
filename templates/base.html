@@ -2,7 +2,8 @@
     "baseURL": "https://salaries.news.baltimoresun.com",
     "siteTitle": "Baltimore Sun Public Salary Records",
     "description": "The Baltimore Sun has published salary records for public employees in Maryland.",
-    "imageURL": "/static/images/green-money-sun.png",
+    "iconURL": "/static/images/green-money-sun.png",
+    "imageURL": "/static/images/salaries-thumb.png",
     "static_version": ".v1",
 } -%}
 {%- set col_name = {
@@ -71,7 +72,7 @@
 
     <!-- Metadata -->
     <meta name="robots" content="index,follow">
-    <link rel="icon" href="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
+    <link rel="icon" href="{{ siteinfo.baseURL }}{{ siteinfo.iconURL }}">
     <link rel="apple-touch-icon" href="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
     <link rel="canonical" href="{{ siteinfo.baseURL }}{{ url }}">
     <meta name="author" content="Baltimore Sun">
