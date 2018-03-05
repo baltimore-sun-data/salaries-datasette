@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ canned_query.replace("-", " ").title() if canned_query else "Custom SQL query" }}{% endblock %}
+{% block title %}{{ canned_query.replace("-", " ") if canned_query else "Custom SQL query" }}{% endblock %}
 
 {% block extra_head %}
 {{ super() }}
@@ -12,7 +12,7 @@
 {% block content %}
 
 {% if canned_query %}
-<h2 class="title">{{ canned_query.replace("-", " ").title() }}</h2>
+<h2 class="title">{{ canned_query.replace("-", " ") }}</h2>
 {% endif %}
 
 {% if rows %}
@@ -22,7 +22,7 @@
             <tr>
             {% for column in columns %}
                 <th scope="col">
-                    {{ col_name[column] | default(column) }}
+                    {{ col_name[column] | default(column) | replace("(numeric)", "") | replace("(dollars)", "") }}
                 </th>
             {% endfor %}
             </tr>
@@ -32,8 +32,10 @@
             <tr class="fancyfloat">
                 {% for cell in row %}
                     {% set col = columns[loop.index0] %}
-                    {% if col in numeric_cols %}
+                    {% if col in numeric_cols or col.endswith('(dollars)') %}
                         <td data-col="{{ col_name[col] | default(col) }}" class="col-right">{{ "${:,.2f}".format(cell|float) }}</td>
+                    {% elif col.endswith('(numeric)') %}
+                        <td data-col="{{ col_name[col] | default(col) }}" class="col-right">{{ "{:,.0f}".format(cell|float) }}</td>
                     {% else %}
                         <td data-col="{{ col_name[col] | default(col) }}" class="">{{ cell if cell else '' }}</td>
                     {% endif %}
@@ -61,8 +63,7 @@
     {% endif %}
     <p><input type="submit" value="Run SQL"></p>
 </form>
-{% endif %}
 
 {% include "_codemirror_foot.html" %}
-
+{% endif %}
 {% endblock %}

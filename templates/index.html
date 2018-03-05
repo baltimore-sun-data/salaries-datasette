@@ -42,24 +42,6 @@
       "csv": "/static/csv/cy2012-md.csv",
     },
 ] %}
-{% set complex_queries = [
-  {
-    "name": "Earnings by organization",
-    "query": "SELECT organization, SUM(ytd_gross_earnings) as ytd_gross_earnings FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY ytd_gross_earnings DESC",
-  },
-  {
-    "name": "Highest paid in organization",
-    "query": "SELECT organization, first_name, last_name, MAX(ytd_gross_earnings) as ytd_gross_earnings FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY ytd_gross_earnings DESC",
-  },
-  {
-    "name": "Average salary per organization",
-    "query": "SELECT organization, AVG(annual_salary) as annual_salary FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY annual_salary DESC",
-  },
-  {
-    "name": "Number of employees in organization",
-    "query": "SELECT organization, pay_rate, count(*) AS Employees FROM [2017 Maryland state salaries] GROUP BY organization, pay_rate ORDER BY pay_rate ASC, Employees DESC",
-  },
-] %}
 {%block extra_head %}
   <link rel="stylesheet" type="text/css" href="/static/css/choices.min.css">
 {% endblock %}
@@ -149,12 +131,12 @@
     </form>
 
     <div class="dbsearch">
-      <label class="label">Complex Queries</label>
-      {% for query in complex_queries %}
+      <label class="label"><a href="/salaries">Complex Queries</a></label>
+      {% for name in metadata.databases.salaries.queries %}
       <a
         class="button"
-        href="/salaries?sql={{query.query|urlencode}}">
-        {{ query.name }}
+        href="/salaries/{{ name }}">
+        {{ name.replace("-", " ") }}
       </a>
       {% endfor %}
     </div>
