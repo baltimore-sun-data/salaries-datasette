@@ -2,7 +2,12 @@
     "databases": {
         "salaries": {
             "queries": {
-                "top-earners": "select first_name, last_name, organization, subtitle, ytd_gross_earnings from [2017 Maryland state salaries] order by ytd_gross_earnings desc limit 50"
+                "Top-Earners": "select first_name, last_name, organization, subtitle, ytd_gross_earnings from [2017 Maryland state salaries] order by ytd_gross_earnings desc limit 50",
+                "Highest-paid-in-organization": "SELECT organization, first_name, last_name, MAX(ytd_gross_earnings) as ytd_gross_earnings FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY ytd_gross_earnings DESC",
+                "Total-earnings-by-organization": "SELECT organization, SUM(ytd_gross_earnings) as 'Total Organization Earnings(dollars)' FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY SUM(ytd_gross_earnings) DESC",
+                "Average-salary-per-organization": "SELECT organization, AVG(annual_salary) as 'Average Annual Salary(dollars)' FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY AVG(annual_salary) DESC",
+                "Overtime-per-organization": "SELECT organization, AVG(overtime_earnings) as 'Average Overtime(dollars)', MAX(overtime_earnings) as 'Max Overtime(dollars)', count(*) as 'Total Employees(numeric)' FROM [2017 Maryland state salaries] GROUP BY organization ORDER BY AVG(overtime_earnings) DESC",
+                "Number-of-employees-in-organization": "SELECT organization, pay_rate, count(*) AS 'Employees(numeric)' FROM [2017 Maryland state salaries] GROUP BY organization, pay_rate ORDER BY pay_rate ASC, count(*) DESC"
             }
         }
     },
