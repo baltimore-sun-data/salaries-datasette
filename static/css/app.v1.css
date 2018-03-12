@@ -109,7 +109,6 @@ body {
   line-height: 1;
   margin-top: 50px;
   min-height: 100vh;
-  width: 100vw;
 }
 ol,
 ul {
@@ -140,7 +139,9 @@ body {
   -webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
   -webkit-text-size-adjust: 100%;
 }
-
+.center {
+  margin: 0 auto;
+}
 /* #Typography
 ================================================== */
 h1,
@@ -270,6 +271,7 @@ a,
 a:visited {
   color: inherit;
   outline: 0;
+  text-decoration: none;
 }
 a:hover,
 a:focus {
@@ -291,7 +293,7 @@ img.scale-with-grid {
 /* #Buttons
 ================================================== */
 
-.button,
+.button, a.button,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -308,7 +310,6 @@ input[type="button"] {
   margin-bottom: 5px;
   padding: 8px 10px;
   text-decoration: none;
-  width: 100%;
 }
 
 .button:hover,
@@ -338,6 +339,25 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
+/******** SUBSCRIBE ********** */
+.subscribe {
+  font-size: 1.5em;
+  margin: 60px auto;
+  text-align: center;
+  max-width: 800px;
+  padding: 20px 15px 15px 15px;
+  color: #667682;
+  background-color: #ccf3e7;
+}
+.subscribe-btn {
+  font-weight: bold;
+  font-size: 16px;
+  margin-left: 10px;
+  padding: 10px;
+}
+.center {
+  text-align: center;
+}
 /* #Forms
 ================================================== */
 
@@ -518,18 +538,20 @@ hr {
   text-align: center;
 }
 .rangeselector,
-.dbsearch {
+.dbsearch, .back-btn, a.back-btn {
   position: relative;
   display: inline-block;
   width: 260px;
   height: auto;
   padding: 15px;
   margin: 10px;
+  font-size: 16px;
   border-radius: 8px;
   background-color: #3c9076;
   color: white;
   font-weight: bold;
   vertical-align: top;
+  text-align: center;
 }
 .roundcaveat {
   color: #9ee6d0;
@@ -730,15 +752,6 @@ div .search-row input {
   border: none;
   border-radius: 5px;
 }
-.back-btn {
-  border: none;
-  font-size: 16px;
-  padding: 5px 0 5px 0;
-  color: #ccf3e7;
-}
-a.back-btn {
-  color: inherit;
-}
 
 #ad-slot {
   background-color: #ccc;
@@ -755,27 +768,23 @@ a.back-btn {
   }
 }
 
-.js-active .js-click thead,
-.js-active .hide-columns tbody {
+.js-click thead,
+.hide-columns tbody {
   cursor: pointer;
 }
 
-.js-click .rowid {
-  display: none;
-}
-
-.js-active .hide-columns .Link,
-.js-active .hide-columns .rowid,
-.js-active .hide-columns .suffix,
-.js-active .hide-columns .system,
-.js-active .hide-columns .agency,
-.js-active .hide-columns .class_code,
-.js-active .hide-columns .pay_rate,
-.js-active .hide-columns .annual_salary,
-.js-active .hide-columns .regular_earnings,
-.js-active .hide-columns .overtime_earnings,
-.js-active .hide-columns .other_earnings,
-.js-active .hide-columns .term_date {
+.hide-columns .Link,
+.hide-columns .rowid,
+.hide-columns .suffix,
+.hide-columns .system,
+.hide-columns .agency,
+.hide-columns .class_code,
+.hide-columns .pay_rate,
+.hide-columns .annual_salary,
+.hide-columns .regular_earnings,
+.hide-columns .overtime_earnings,
+.hide-columns .other_earnings,
+.hide-columns .term_date {
   display: none;
 }
 

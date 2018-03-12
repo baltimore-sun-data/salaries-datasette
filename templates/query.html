@@ -10,11 +10,12 @@
 {% block body_class %}query db-{{ database|to_css_class }}{% endblock %}
 
 {% block content %}
-
 {% if canned_query %}
 <h2 class="title">{{ canned_query.replace("-", " ") }}</h2>
 {% endif %}
-
+<div class="center">
+    <a class="back-btn" href="/">Back to main search</a>
+</div>
 {% if rows %}
     <div class="table-wrapper table-wrapper__responsive">
     <table class="dbresults">
