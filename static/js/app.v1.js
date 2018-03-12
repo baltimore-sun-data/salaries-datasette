@@ -56,8 +56,8 @@ window.addEventListener("load", function() {
 
   // Toggle extra columns
   document
-    .querySelectorAll(".dbresults.js-click thead")
+    .querySelectorAll(".view-cols.js-click button")
     .addEventListener("click", function(e) {
-      e.target.closest("table").classList.toggle("hide-columns");
+      e.target.closest(".table-wrapper").querySelector("table").classList.toggle("hide-columns");
     });
 });

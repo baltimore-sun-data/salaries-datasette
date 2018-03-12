@@ -1,26 +1,29 @@
 <div class="table-wrapper table-wrapper__responsive">
-<table class="dbresults hide-columns js-click">
-    <thead title="Click to toggle extra columns">
-        <tr>
-        {% for column in display_columns %}
-            <th scope="col" class="{{ column }}">
-                {{ col_name[column] | default(column) }}
-            </th>
-        {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-    {% for row in display_rows %}
-        <tr class="fancyfloat">
-            {% for cell in row %}
-                {% if cell.column in numeric_cols %}
-                    <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="col-right {{cell.column}}">{{ "${:,.2f}".format(cell.value|float) }}</td>
-                {% else %}
-                    <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="{{cell.column}}">{{ cell.value }}</td>
-                {% endif %}
+    <div class="view-cols js-click center">
+        <button>View/hide all columns</button>
+    </div>
+    <table class="dbresults js-click hide-columns">
+        <thead title="Click to toggle extra columns">
+            <tr>
+            {% for column in display_columns %}
+                <th scope="col" class="{{ column }}">
+                    {{ col_name[column] | default(column) }}
+                </th>
             {% endfor %}
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in display_rows %}
+            <tr class="fancyfloat">
+                {% for cell in row %}
+                    {% if cell.column in numeric_cols %}
+                        <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="col-right {{cell.column}}">{{ "${:,.2f}".format(cell.value|float) }}</td>
+                    {% else %}
+                        <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="{{cell.column}}">{{ cell.value }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>

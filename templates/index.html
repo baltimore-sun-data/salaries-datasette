@@ -65,7 +65,7 @@
   <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
       <label class="label" for="_search">Basic search:</label>
       <input id="_search" type="search" name="_search" placeholder="Name or organization">
-      <button type="submit">Go</button>
+      <button class="full-width" type="submit">Go</button>
   </form>
 
   <div class="">
@@ -81,7 +81,7 @@
         {% endfor %}
        </select>
       </div>
-      <button type="submit">View</button>
+      <button class="full-width" type="submit">View</button>
      </div>
     </form>
 
@@ -126,7 +126,7 @@
        </select>
       </div>
       <input type="text" name="_filter_value" class="filter-value" placeholder="value" id="advanced-search">
-      <button type="submit">Search</button>
+      <button class="full-width" type="submit">Search</button>
      </div>
     </form>
 
@@ -134,7 +134,7 @@
       <label class="label"><a href="/salaries">Complex Queries</a></label>
       {% for name in metadata.databases.salaries.queries %}
       <a
-        class="button"
+        class="button full-width"
         href="/salaries/{{ name }}">
         {{ name.replace("-", " ") }}
       </a>
@@ -151,7 +151,7 @@
     The Office of the Maryland Comptroller has rounded the salaries and gross pays to the nearest thousand to prevent tax fraud attempts on state employees. As a result, some figures have been rounded down to zero.
   </p>
 
-  <h2>Government salary records</h2>
+  <h2>State salary archives</h2>
   <ul>
     {% for ds in datasets %}
     <li>

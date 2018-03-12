@@ -60,12 +60,10 @@
             </select>
         </div>
         <input type="text" name="_filter_value" class="filter-value">
-        <input type="submit" value="{% if filters.has_selections() %}Apply filters{% else %}Add filter{% endif %}">
+        <input type="submit" class="full-width" value="{% if filters.has_selections() %}Apply filters{% else %}Add filter{% endif %}">
     </div>
+    <a class="back-btn" href="/">Back to main search</a>
 
-    <div class="dbsearch">
-        <a class="button back-btn" href="/">Back to main search</a>
-    </div>
 </form>
 
 {% include custom_rows_and_columns_templates %}
