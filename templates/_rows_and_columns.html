@@ -6,8 +6,17 @@
         <thead title="Click to toggle extra columns">
             <tr>
             {% for column in display_columns %}
-                <th scope="col" class="{{ column }}">
-                    {{ col_name[column] | default(column) }}
+                {% set name = col_name[column.name] | default(column.name) %}
+                <th scope="col" class="{{ column.name }}">
+                    {% if not column.sortable %}
+                        {{ name }}
+                    {% else %}
+                        {% if column.name == sort %}
+                            <a href="{{ path_with_added_args(request, {'_sort_desc': column.name, '_sort': None, '_next': None}) }}" rel="nofollow">{{ name }}&nbsp;▼</a>
+                        {% else %}
+                            <a href="{{ path_with_added_args(request, {'_sort': column.name, '_sort_desc': None, '_next': None}) }}" rel="nofollow">{{ name }}{% if column.name == sort_desc %}&nbsp;▲{% endif %}</a>
+                        {% endif %}
+                    {% endif %}
                 </th>
             {% endfor %}
             </tr>
