@@ -40,7 +40,6 @@
     {% endfor %}
     <div class="dbsearch filter-row">
         <div class="select-wrapper">
-            Filter:
             <select name="_filter_column">
                 <option value="">- column -</option>
                 {% for c in filter_columns %}
@@ -60,8 +59,36 @@
             </select>
         </div>
         <input type="text" name="_filter_value" class="filter-value">
-        <input type="submit" class="full-width" value="{% if filters.has_selections() %}Apply filters{% else %}Add filter{% endif %}">
     </div>
+
+    {% if is_sortable %}
+        <div class="dbsearch filter-row">
+            Sort by:
+            <div class="select-wrapper">
+                <select name="_sort" id="sort_by">
+                    <option value="">Default</option>
+                    {% for column in display_columns %}
+                        {% if column.sortable and column.name != "rowid" %}
+                            <option
+                                value="{{ column.name }}"
+                                {% if column.name == sort or column.name == sort_desc %}selected{% endif %}>
+                                {{- col_name[column.name] | default(column.name) -}}
+                            </option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <label class="sort_by_desc">
+                <input
+                    type="checkbox"
+                    name="_sort_by_desc"
+                    {% if sort_desc %}checked{% endif %}>
+                    Descending
+            </label>
+        </div>
+    {% endif %}
+
+    <button type="submit" class="dbsearch">Apply</button>
     <a class="back-btn" href="/">Back to main search</a>
 
 </form>

@@ -535,21 +535,30 @@ hr {
   text-align: center;
 }
 .rangeselector,
-.dbsearch, .back-btn, a.back-btn {
-  position: relative;
-  display: inline-block;
-  width: 260px;
-  height: auto;
-  padding: 15px;
-  margin: 10px;
-  font-size: 16px;
-  border-radius: 8px;
+.dbsearch,
+.back-btn,
+a.back-btn {
   background-color: #3c9076;
+  border-radius: 8px;
   color: white;
+  display: inline-block;
+  font-size: 16px;
   font-weight: bold;
-  vertical-align: top;
+  height: auto;
+  margin: 10px;
+  padding: 15px;
+  position: relative;
   text-align: center;
+  vertical-align: top;
+  width: 260px;
 }
+
+.back-btn:hover,
+a.back-btn:hover {
+  background-color: #9ee6d0;
+  text-decoration: none;
+}
+
 .roundcaveat {
   color: #9ee6d0;
 }
