@@ -7,6 +7,7 @@ THIS_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 cd "$THIS_DIR"
 
 venv-datasette/bin/datasette serve \
+    --port 9001 \
     --template-dir ./templates \
     --static static:./static \
     --metadata metadata.json \
