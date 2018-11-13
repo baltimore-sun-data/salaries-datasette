@@ -12,9 +12,9 @@
                         {{ name }}
                     {% else %}
                         {% if column.name == sort %}
-                            <a href="{{ path_with_added_args(request, {'_sort_desc': column.name, '_sort': None, '_next': None}) }}" rel="nofollow">{{ name }}&nbsp;▲</a>
+                            <a href="{{ path_with_replaced_args(request, {'_sort_desc': column.name, '_sort': None, '_next': None}) }}" rel="nofollow">{{ name }}&nbsp;▲</a>
                         {% else %}
-                            <a href="{{ path_with_added_args(request, {'_sort': column.name, '_sort_desc': None, '_next': None}) }}" rel="nofollow">{{ name }}{% if column.name == sort_desc %}&nbsp;▼{% endif %}</a>
+                            <a href="{{ path_with_replaced_args(request, {'_sort': column.name, '_sort_desc': None, '_next': None}) }}" rel="nofollow">{{ name }}{% if column.name == sort_desc %}&nbsp;▼{% endif %}</a>
                         {% endif %}
                     {% endif %}
                 </th>
