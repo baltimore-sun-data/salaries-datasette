@@ -1,3 +1,5 @@
+import json
+
 from datasette import hookimpl
 
 
@@ -23,3 +25,9 @@ def prepare_jinja2_environment(env):
     env.filters.update(filter_registry)
     env.tests.update(test_registry)
     env.globals.update({ name: f() for name, f in global_registry.items()})
+
+
+@register_global
+def site_info():
+    with open("site_info.json") as f:
+        return json.load(f)

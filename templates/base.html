@@ -1,11 +1,3 @@
-{%- set siteinfo = {
-    "baseURL": "https://salaries.news.baltimoresun.com",
-    "siteTitle": "Baltimore Sun Public Salary Records",
-    "description": "The Baltimore Sun has published salary records for public employees in Maryland.",
-    "iconURL": "/static/images/logo.png",
-    "imageURL": "/static/images/salaries-thumb.png",
-    "static_version": ".v2",
-} -%}
 {%- set col_name = {
     'agency': 'Agency code',
     'annual_salary': 'Annual salary',
@@ -32,18 +24,18 @@
 <html>
 <head>
     <title>
-      {%- block fulltitle %}{% block title %}{% endblock %} &middot; {{ siteinfo.siteTitle }}{% endblock -%}
+      {%- block fulltitle %}{% block title %}{% endblock %} &middot; {{ site_info.siteTitle }}{% endblock -%}
     </title>
     <!--Basic page needs-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Montserrat">
-    <link rel="stylesheet" href="/static/css/app{{ siteinfo.static_version }}.css">
+    <link rel="stylesheet" href="/static/css/app{{ site_info.static_version }}.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Start: GPT Async -->
-    <script src="/static/js/app{{ siteinfo.static_version }}.js" async></script>
+    <script src="/static/js/app{{ site_info.static_version }}.js" async></script>
     <script type='text/javascript'>
       var gptadslots = [];
       var googletag = googletag || {};
@@ -72,24 +64,24 @@
 
     <!-- Metadata -->
     <meta name="robots" content="index,follow">
-    <link rel="icon" href="{{ siteinfo.baseURL }}{{ siteinfo.iconURL }}">
-    <link rel="apple-touch-icon" href="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
-    <link rel="canonical" href="{{ siteinfo.baseURL }}{{ url }}">
+    <link rel="icon" href="{{ site_info.baseURL }}{{ site_info.iconURL }}">
+    <link rel="apple-touch-icon" href="{{ site_info.baseURL }}{{ site_info.imageURL }}">
+    <link rel="canonical" href="{{ site_info.baseURL }}{{ url }}">
     <meta name="author" content="Baltimore Sun">
-    <meta name="description" content="{{ siteinfo.description }}">
+    <meta name="description" content="{{ site_info.description }}">
     <!--Facebook Stuff-->
     <meta property="fb:app_id" content="310302989040998">
-    <meta property="og:description" content="{{ siteinfo.description }}">
-    <meta property="og:image" content="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
-    <meta property="og:site_name" content="{{ siteinfo.siteTitle }}">
+    <meta property="og:description" content="{{ site_info.description }}">
+    <meta property="og:image" content="{{ site_info.baseURL }}{{ site_info.imageURL }}">
+    <meta property="og:site_name" content="{{ site_info.siteTitle }}">
     <meta property="og:title" content="{{ self.title() }}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ siteinfo.baseURL }}{{ url }}">
+    <meta property="og:url" content="{{ site_info.baseURL }}{{ url }}">
     <!--Twitter Stuff-->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@baltsundata">
-    <meta name="twitter:description" content="{{ siteinfo.description }}">
-    <meta name="twitter:image" content="{{ siteinfo.baseURL }}{{ siteinfo.imageURL }}">
+    <meta name="twitter:description" content="{{ site_info.description }}">
+    <meta name="twitter:image" content="{{ site_info.baseURL }}{{ site_info.imageURL }}">
     <meta name="twitter:site" content="@baltimoresun">
     <meta name="twitter:title" content="{{ self.title() }}">
 
@@ -115,7 +107,7 @@
   </nav>
 
   <section id="salary-content">
-      <h1 class="title"><a href="/">{{ siteinfo.siteTitle }}</a></h1>
+      <h1 class="title"><a href="/">{{ site_info.siteTitle }}</a></h1>
       {% block content %}
       {% endblock %}
   </section>
