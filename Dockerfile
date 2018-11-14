@@ -16,11 +16,12 @@ RUN ./create-db.sh
 # Install templates
 COPY . .
 
-EXPOSE 8001
+EXPOSE 9001
 
 CMD /app/venv-datasette/bin/datasette serve \
     --host 0 \
-    --port 8001 \
+    --port 9001 \
+    --plugins-dir ./plugins \
     --template-dir ./templates \
     --static static:./static \
     --metadata metadata.json \
