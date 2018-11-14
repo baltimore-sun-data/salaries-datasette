@@ -8,6 +8,7 @@ cd "$THIS_DIR"
 
 venv-datasette/bin/datasette serve \
     --port 9001 \
+    --plugins-dir ./plugins \
     --template-dir ./templates \
     --static static:./static \
     --metadata metadata.json \
