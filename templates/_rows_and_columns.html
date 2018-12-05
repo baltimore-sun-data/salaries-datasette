@@ -6,15 +6,14 @@
         <thead title="Click to toggle extra columns">
             <tr>
             {% for column in display_columns %}
-                {% set name = col_name[column.name] | default(column.name) %}
                 <th scope="col" class="{{ column.name }}">
                     {% if not column.sortable %}
-                        {{ name }}
+                        {{ column.name|format_name }}
                     {% else %}
                         {% if column.name == sort %}
-                            <a href="{{ path_with_replaced_args(request, {'_sort_desc': column.name, '_sort': None, '_next': None}) }}" rel="nofollow">{{ name }}&nbsp;▲</a>
+                            <a href="{{ path_with_replaced_args(request, {'_sort_desc': column.name, '_sort': None, '_next': None}) }}" rel="nofollow">{{ column.name|format_name }}&nbsp;▲</a>
                         {% else %}
-                            <a href="{{ path_with_replaced_args(request, {'_sort': column.name, '_sort_desc': None, '_next': None}) }}" rel="nofollow">{{ name }}{% if column.name == sort_desc %}&nbsp;▼{% endif %}</a>
+                            <a href="{{ path_with_replaced_args(request, {'_sort': column.name, '_sort_desc': None, '_next': None}) }}" rel="nofollow">{{ column.name|format_name }}{% if column.name == sort_desc %}&nbsp;▼{% endif %}</a>
                         {% endif %}
                     {% endif %}
                 </th>
@@ -25,11 +24,10 @@
         {% for row in display_rows %}
             <tr class="fancyfloat">
                 {% for cell in row %}
-                    {% if cell.column in numeric_cols %}
-                        <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="col-right {{cell.column}}">{{ "${:,.2f}".format(cell.value|float) }}</td>
-                    {% else %}
-                        <td data-col="{{ col_name[cell.column] | default(cell.column) }}" class="{{cell.column}}">{{ cell.value }}</td>
-                    {% endif %}
+                    <td
+                        data-col="{{ cell.column|format_name }}"
+                        class="{% if cell.column is numeric %}col-right{% endif %} {{ cell.column }}"
+                    >{{ format_for(cell.value, cell.column) }}</td>
                 {% endfor %}
             </tr>
         {% endfor %}
