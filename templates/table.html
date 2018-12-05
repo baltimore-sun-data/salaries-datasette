@@ -22,7 +22,7 @@
                     {% for c in filter_columns %}
                           <option
                             {% if c == column %}selected{% endif %}
-                            value="{{ c }}">{{ col_name[c] | default(c) }}</option>
+                            value="{{ c }}">{{ c|format_name_long }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -43,7 +43,7 @@
             <select name="_filter_column">
                 <option value="">- column -</option>
                 {% for c in filter_columns %}
-                      <option value="{{ c }}">{{ col_name[c] | default(c) }}</option>
+                      <option value="{{ c }}">{{ c|format_name_long }}</option>
                 {% endfor %}
             </select>
         </div>
@@ -72,7 +72,7 @@
                             <option
                                 value="{{ column.name }}"
                                 {% if column.name == sort or column.name == sort_desc %}selected{% endif %}>
-                                {{- col_name[column.name] | default(column.name) -}}
+                                {{- column.name|format_name_long -}}
                             </option>
                         {% endif %}
                     {% endfor %}

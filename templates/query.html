@@ -23,7 +23,7 @@
             <tr>
             {% for column in columns %}
                 <th scope="col">
-                    {{ col_name[column] | default(column) | replace("(numeric)", "") | replace("(dollars)", "") }}
+                    {{ column|format_name }}
                 </th>
             {% endfor %}
             </tr>
@@ -33,13 +33,14 @@
             <tr class="fancyfloat">
                 {% for cell in row %}
                     {% set col = columns[loop.index0] %}
-                    {% if col in numeric_cols or col.endswith('(dollars)') %}
-                        <td data-col="{{ col_name[col] | default(col) }}" class="col-right">{{ "${:,.2f}".format(cell|float) }}</td>
-                    {% elif col.endswith('(numeric)') %}
-                        <td data-col="{{ col_name[col] | default(col) }}" class="col-right">{{ "{:,.0f}".format(cell|float) }}</td>
-                    {% else %}
-                        <td data-col="{{ col_name[col] | default(col) }}" class="">{{ cell if cell else '' }}</td>
-                    {% endif %}
+                    <td
+                        data-col="{{ col|format_name }}"
+                        {% if col is numeric %}
+                            class="col-right"
+                        {% endif %}
+                    >
+                        {{ format_for(cell, col) }}
+                    </td>
                 {% endfor %}
             </tr>
         {% endfor %}

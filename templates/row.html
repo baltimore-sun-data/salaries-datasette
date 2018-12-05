@@ -3,19 +3,14 @@
 {% block title %}{{ table }}{% endblock %}
 
 {% block content %}
-{% set col_name = dict(col_name, middle_initial='Middle Initial') %}
 <main id="salary-content">
     <div class="table-wrapper table-wrapper__row-view">
     <table class="dbresults">
     {% for row in display_rows %}
             {% for cell in row if not cell.column == 'rowid' %}
             <tr>
-                <th>{{ col_name[cell.column] | default(cell.column) }}</th>
-                {% if cell.column in numeric_cols %}
-                    <td class="col-left">{{ "${:,.2f}".format(cell.value|float) }}</td>
-                {% else %}
-                    <td class="col-left">{{ cell.value }}</td>
-                {% endif %}
+                <th>{{ cell.column|format_name_long }}</th>
+                <td class="col-left">{{ format_for(cell.value, cell.column) }}</td>
             </tr>
             {% endfor %}
     {% endfor %}
