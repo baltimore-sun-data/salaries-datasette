@@ -23,11 +23,18 @@ function serve() {
 
 function setup() {
 	local REQUIREMENTS="$1"
+	local PYTHON="python3"
+
+	# Travis breaks Python for some reason
+	if [ -n "${TRAVIS:-}" ]; then
+		PYTHON="/opt/python/3.6/bin/python"
+	fi
 	echo "Test for Python 3"
-	[[ -z $(which python3) ]] && brew install python3
+	[[ -z $(which "$PYTHON") ]] && brew install python3
 
 	echo "Create Python virtual env"
-	python3 -m venv venv-datasette
+
+	"$PYTHON" -m venv --clear venv-datasette
 
 	echo "Pre-install setup Python"
 	venv-datasette/bin/pip install --upgrade pip setuptools wheel
@@ -46,11 +53,11 @@ serve-prod)
 	;;
 
 setup)
-	setup requirments-dev.txt
+	setup requirements-dev.txt
 	;;
 
 setup-prod)
-	setup requirments.txt
+	setup requirements.txt
 	;;
 
 create-db)

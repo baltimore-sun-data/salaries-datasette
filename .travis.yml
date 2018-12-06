@@ -1,0 +1,10 @@
+language: python
+python:
+  - "3.6"
+
+install:
+  - unset VIRTUAL_ENV
+  - ./run.sh setup
+
+script:
+  - ./run.sh check-format
