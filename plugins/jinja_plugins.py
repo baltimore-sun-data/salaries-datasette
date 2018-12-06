@@ -1,6 +1,5 @@
 import json
 
-from jinja2 import contextfilter, contextfunction
 from datasette import hookimpl
 
 
