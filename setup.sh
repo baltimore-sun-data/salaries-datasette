@@ -16,4 +16,4 @@ echo "Pre-install setup Python"
 venv-datasette/bin/pip install --upgrade pip setuptools wheel
 
 echo "Install datasette"
-venv-datasette/bin/pip install --no-deps --src src -r requirements.txt
+venv-datasette/bin/pip install --no-deps --src src -r requirements-dev.txt
