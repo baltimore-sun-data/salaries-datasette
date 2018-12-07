@@ -1,3 +1,14 @@
+FROM node:11 as yarn-builder
+
+WORKDIR /app
+
+COPY frontend/package.json frontend/yarn.lock ./
+RUN yarn
+
+COPY frontend/ .
+
+RUN yarn build
+
 FROM python:3.6
 
 WORKDIR /app
@@ -14,6 +25,9 @@ RUN ./run.sh create-db
 
 # Install templates
 COPY . .
+
+COPY --from=yarn-builder /app/dist /app/dist
+RUN cp -r static dist
 
 EXPOSE 9001
 

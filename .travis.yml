@@ -1,4 +1,5 @@
 language: python
+node_js: 11
 cache: pip
 python:
   - "3.6"
@@ -6,6 +7,7 @@ python:
 install:
   - unset VIRTUAL_ENV
   - ./run.sh setup
+  - ./run.sh setup-frontend
 
 script:
   - ./run.sh check-format

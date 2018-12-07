@@ -109,6 +109,9 @@ ENV/
 data/
 src/
 venv-datasette/
+dist
+frontend/node_modules
+frontend/dist
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
