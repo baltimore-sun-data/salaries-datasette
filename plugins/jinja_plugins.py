@@ -1,4 +1,6 @@
 import json
+import os
+from urllib import parse
 
 from datasette import hookimpl
 
@@ -115,3 +117,36 @@ def numeric(column):
         or column.endswith("(numeric)")
         or column.endswith("(dollars)")
     )
+
+
+_vue_manifest = None
+
+
+def load_vue_manifest():
+    global _vue_manifest
+    if _vue_manifest is not None:
+        return _vue_manifest
+
+    manifest_file = os.environ.get("MANIFEST_FILE")
+    if not manifest_file:
+        _vue_manifest = False
+        return _vue_manifest
+
+    with open(manifest_file) as f:
+        _vue_manifest = json.load(f)
+
+    return _vue_manifest
+
+
+@register(global_registry)
+def is_vue_dev():
+    return not load_vue_manifest()
+
+
+@register(filter_registry)
+def vue_url(entry):
+    manifest = load_vue_manifest()
+    if not manifest:
+        return parse.urljoin("http://localhost:9002/static/", entry)
+
+    return manifest.get(entry) or ""

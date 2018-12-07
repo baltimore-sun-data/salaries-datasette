@@ -10,11 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato|Montserrat">
-    <link rel="stylesheet" href="/static/css/app{{ site_info.static_version }}.css">
+    {% if not is_vue_dev %}
+      <link rel="stylesheet" type="text/css" href='{{ "app.css" | vue_url }}'>
+    {% endif %}
+    <script src='{{ "app.js" | vue_url }}' defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Start: GPT Async -->
-    <script src="/static/js/app{{ site_info.static_version }}.js" async></script>
     <script type='text/javascript'>
       var gptadslots = [];
       var googletag = googletag || {};
@@ -63,7 +65,6 @@
     <meta name="twitter:image" content="{{ site_info.baseURL }}{{ site_info.imageURL }}">
     <meta name="twitter:site" content="@baltimoresun">
     <meta name="twitter:title" content="{{ self.title() }}">
-
     {% block extra_head %}{% endblock %}
 </head>
 

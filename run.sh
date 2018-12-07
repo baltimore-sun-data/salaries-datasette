@@ -10,13 +10,15 @@ cd "$THIS_DIR"
 ARGUMENT="${1:-serve}"
 
 function serve() {
-	local HOST="$1"
+	local HOST="${1:-127.0.0.1}"
+	local STATIC_DIR="${2:-./static}"
+
 	venv-datasette/bin/datasette serve \
 		--host "$HOST" \
 		--port 9001 \
 		--plugins-dir ./plugins \
 		--template-dir ./templates \
-		--static static:./static \
+		--static "static:$STATIC_DIR" \
 		--metadata metadata.json \
 		data/*.db
 }
@@ -45,11 +47,17 @@ function setup() {
 
 case "$ARGUMENT" in
 serve)
-	serve 127.0.0.1
+	serve
 	;;
 
 serve-prod)
-	serve 0
+	export MANIFEST_FILE=dist/manifest.json
+	serve 0 ./dist
+	;;
+
+frontend)
+	cd frontend
+	yarn run serve
 	;;
 
 setup)
@@ -60,6 +68,11 @@ setup-prod)
 	setup requirements.txt
 	;;
 
+setup-frontend)
+	cd frontend
+	yarn
+	;;
+
 create-db)
 	venv-datasette/bin/python scripts/clean_up.py
 	;;
@@ -67,11 +80,15 @@ create-db)
 format)
 	venv-datasette/bin/black .
 	venv-datasette/bin/flake8
+	cd frontend
+	yarn run lint
 	;;
 
 check-format)
 	venv-datasette/bin/flake8
 	venv-datasette/bin/black --check .
+	cd frontend
+	yarn run test
 	;;
 
 docker)

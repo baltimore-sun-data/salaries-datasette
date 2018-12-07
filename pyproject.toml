@@ -1,4 +1,4 @@
 [tool.black]
 line-length = 88
 py36 = true
-exclude= '/(venv-datasette|src)/'
+exclude= '/(venv-datasette|src|frontend)/'
