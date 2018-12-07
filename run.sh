@@ -93,8 +93,13 @@ check-format)
 	yarn run test
 	;;
 
+docker-build)
+	docker build -t datasette .
+	;;
+
 docker)
-	docker run -it --rm -p 80:9001 "$(docker build -q .)"
+	docker build -t datasette .
+	docker run -it --rm -p 80:9001 datasette
 	;;
 
 *)

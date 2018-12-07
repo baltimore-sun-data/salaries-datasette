@@ -1,4 +1,7 @@
 language: python
+services:
+  - docker
+
 cache:
   - pip
   - yarn
@@ -16,3 +19,4 @@ install:
 
 script:
   - ./run.sh check-format
+  - ./run.sh docker-build
