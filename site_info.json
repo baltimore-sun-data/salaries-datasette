@@ -3,6 +3,5 @@
     "siteTitle": "Baltimore Sun Public Salary Records",
     "description": "The Baltimore Sun has published salary records for public employees in Maryland.",
     "iconURL": "/static/images/logo.png",
-    "imageURL": "/static/images/salaries-thumb.png",
-    "static_version": ".v2"
+    "imageURL": "/static/images/salaries-thumb.png"
 }
