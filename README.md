@@ -9,4 +9,6 @@ Run `./run.sh create-db` to create a SQLite database out of the provided CSVs.
 
 Run `./run.sh` or `./run.sh serve` to run server at http://localhost:9001.
 
+Run the JS/CSS frontend server in another tab with `./run.sh frontend`.
+
 `Dockerfile` is also provided for running/deploying with Docker.
