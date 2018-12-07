@@ -70,6 +70,8 @@ setup-prod)
 
 setup-frontend)
 	cd frontend
+	node --version
+	yarn --version
 	yarn
 	;;
 

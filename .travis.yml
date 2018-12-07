@@ -1,8 +1,13 @@
 language: python
-node_js: 11
-cache: pip
+cache:
+  - pip
+  - yarn
+
 python:
   - "3.6"
+
+before_install:
+  - nvm install 11
 
 install:
   - unset VIRTUAL_ENV
