@@ -27,7 +27,7 @@ RUN ./run.sh create-db
 COPY . .
 
 COPY --from=yarn-builder /app/dist /app/dist
-RUN cp -r static dist
+RUN cp -vr static/* dist
 
 EXPOSE 9001
 
