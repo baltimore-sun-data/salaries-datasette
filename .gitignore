@@ -118,3 +118,5 @@ frontend/dist
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+Dockerrun.aws.json
+secrets.json

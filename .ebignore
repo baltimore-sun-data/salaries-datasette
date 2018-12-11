@@ -1,0 +1,10 @@
+*
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+!.ebextensions/*.config
+
+!Dockerrun.aws.json
