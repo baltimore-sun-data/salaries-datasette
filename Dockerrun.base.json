@@ -2,15 +2,25 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "essential": true,
       "dockerfile": ".",
+      "essential": true,
       "image": "datasette",
       "links": [],
       "memoryReservation": 128,
-      "name": "datasette",
+      "name": "datasette"
+    },
+    {
+      "dockerfile": "nginx",
+      "essential": true,
+      "image": "nginx",
+      "links": [
+        "datasette"
+      ],
+      "memoryReservation": 128,
+      "name": "nginx",
       "portMappings": [
         {
-          "containerPort": 9001,
+          "containerPort": 80,
           "hostPort": 80
         }
       ]
