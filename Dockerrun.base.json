@@ -1,0 +1,21 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "essential": true,
+      "dockerfile": ".",
+      "image": "datasette",
+      "links": [],
+      "memoryReservation": 128,
+      "name": "datasette",
+      "portMappings": [
+        {
+          "containerPort": 9001,
+          "hostPort": 80
+        }
+      ]
+    }
+  ],
+  "family": "",
+  "volumes": []
+}
