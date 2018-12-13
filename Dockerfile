@@ -26,8 +26,7 @@ RUN ./run.sh create-db
 # Install templates
 COPY . .
 
-COPY --from=yarn-builder /app/dist /app/dist
-RUN cp -vr static/* dist
+COPY --from=yarn-builder /app/dist /app/frontend/dist
 
 EXPOSE 9001
 
