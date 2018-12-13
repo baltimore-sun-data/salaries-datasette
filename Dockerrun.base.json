@@ -2,7 +2,6 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "dockerfile": ".",
       "essential": true,
       "image": "datasette",
       "links": [],
@@ -10,7 +9,6 @@
       "name": "datasette"
     },
     {
-      "dockerfile": "nginx",
       "essential": true,
       "image": "nginx",
       "links": [

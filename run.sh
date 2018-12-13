@@ -94,12 +94,11 @@ check-format)
 	;;
 
 docker-build)
-	docker build -t datasette .
+	docker-compose build
 	;;
 
 docker)
-	docker build -t datasette .
-	docker run -it --rm -p 80:9001 datasette
+	docker-compose up
 	;;
 
 *)

@@ -7,3 +7,4 @@ dist
 frontend/node_modules
 frontend/dist
 Dockerrun.*
+docker-compose.yaml
