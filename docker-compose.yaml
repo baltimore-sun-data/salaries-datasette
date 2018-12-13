@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  datasette:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: ${ECR_REPO:-local}/salaries:datasette-${DATE_TAG:-local}
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+      args:
+        - APP_VERSION
+    image: ${ECR_REPO:-local}/salaries:nginx-${DATE_TAG:-local}
+    depends_on:
+      - datasette
+    ports:
+      - "0.0.0.0:80:80"
