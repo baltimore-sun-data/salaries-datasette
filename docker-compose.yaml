@@ -1,11 +1,16 @@
 version: '3'
 
+volumes:
+  static_files: {}
+
 services:
   datasette:
     build:
       context: .
       dockerfile: ./Dockerfile
     image: ${ECR_REPO:-local}/salaries:datasette-${DATE_TAG:-local}
+    volumes:
+      - static_files:/app/dist
 
   nginx:
     build:
@@ -18,3 +23,5 @@ services:
       - datasette
     ports:
       - "0.0.0.0:80:80"
+    volumes:
+      - static_files:/app/dist

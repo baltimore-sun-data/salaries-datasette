@@ -52,7 +52,7 @@ serve)
 
 serve-prod)
 	export MANIFEST_FILE=dist/manifest.json
-	cp -vr frontend/dist ./dist
+	cp -vr frontend/dist .
 	cp -vr static/* ./dist
 
 	serve 0 ./dist
