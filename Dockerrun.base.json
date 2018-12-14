@@ -6,6 +6,13 @@
       "image": "datasette",
       "links": [],
       "memoryReservation": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "static_files",
+          "containerPath": "/app/dist",
+          "readOnly": false
+        }
+      ],
       "name": "datasette"
     },
     {
@@ -15,6 +22,13 @@
         "datasette"
       ],
       "memoryReservation": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "static_files",
+          "containerPath": "/app/dist",
+          "readOnly": true
+        }
+      ],
       "name": "nginx",
       "portMappings": [
         {
@@ -25,5 +39,12 @@
     }
   ],
   "family": "",
-  "volumes": []
+  "volumes": [
+    {
+      "name": "static_files",
+      "host": {
+        "sourcePath": "/var/app/current/dist"
+      }
+    }
+  ]
 }
