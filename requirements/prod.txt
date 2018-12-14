@@ -1,0 +1,3 @@
+-r base.txt
+
+newrelic==4.8.0.110

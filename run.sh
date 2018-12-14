@@ -9,20 +9,6 @@ cd "$THIS_DIR"
 
 ARGUMENT="${1:-serve}"
 
-function serve() {
-	local HOST="${1:-127.0.0.1}"
-	local STATIC_DIR="${2:-./static}"
-
-	venv-datasette/bin/datasette serve \
-		--host "$HOST" \
-		--port 9001 \
-		--plugins-dir ./plugins \
-		--template-dir ./templates \
-		--static "static:$STATIC_DIR" \
-		--metadata metadata.json \
-		data/*.db
-}
-
 function setup() {
 	local REQUIREMENTS="$1"
 	local PYTHON="python3"
@@ -47,15 +33,31 @@ function setup() {
 
 case "$ARGUMENT" in
 serve)
-	serve
+	venv-datasette/bin/datasette serve \
+		--host "127.0.0.1" \
+		--port 9001 \
+		--plugins-dir ./plugins \
+		--template-dir ./templates \
+		--static "static:./static" \
+		--metadata metadata.json \
+		data/*.db
 	;;
 
 serve-prod)
 	export MANIFEST_FILE=dist/manifest.json
+	export NEW_RELIC_APP_NAME='Mencken (Datasette)'
 	cp -vr frontend/dist .
 	cp -vr static/* ./dist
 
-	serve 0 ./dist
+	venv-datasette/bin/newrelic-admin run-program \
+		venv-datasette/bin/datasette serve \
+		--host "0" \
+		--port 9001 \
+		--plugins-dir ./plugins \
+		--template-dir ./templates \
+		--static "static:./dist" \
+		--metadata metadata.json \
+		data/*.db
 	;;
 
 frontend)
@@ -64,11 +66,11 @@ frontend)
 	;;
 
 setup)
-	setup requirements-dev.txt
+	setup requirements/dev.txt
 	;;
 
 setup-prod)
-	setup requirements.txt
+	setup requirements/prod.txt
 	;;
 
 setup-frontend)
