@@ -1,4 +1,4 @@
--r requirements.txt
+-r base.txt
 
 # Tools
 black==18.9b0
