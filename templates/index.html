@@ -43,7 +43,7 @@
     },
 ] %}
 {%block extra_head %}
-  <link rel="stylesheet" type="text/css" href="/static/css/choices.min.css">
+
 {% endblock %}
 
 {% block content %}
@@ -168,19 +168,4 @@
     </li>
   </ul>
 </section>
-
-<script src="/static/js/choices.min.js"></script>
-<script type="text/javascript">
-  new Choices("#agency-search",{
-    itemSelectText: "",
-    fuseOptions: {
-      shouldSort: true,
-      tokenize: true,
-      matchAllTokens: true,
-      includeScore: true
-    }
-  }).passedElement.addEventListener('change', function(event) {
-    event.target.closest("form").submit();
-  });
-</script>
 {% endblock %}
