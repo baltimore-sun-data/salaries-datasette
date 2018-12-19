@@ -13,7 +13,11 @@ module.exports = {
     config.optimization.splitChunks(false);
   },
   devServer: {
-    port: "9002"
+    port: "9002",
+    allowedHosts: ["*"],
+    headers: {
+      "Access-Control-Allow-Origin": "*"
+    }
   },
   configureWebpack: {
     plugins: [new ManifestPlugin()]
