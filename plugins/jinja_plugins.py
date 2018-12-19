@@ -2,6 +2,8 @@ import json
 import os
 from urllib import parse
 
+from jinja2 import contextfilter, contextfunction
+
 from datasette import hookimpl
 
 
@@ -50,7 +52,7 @@ formatted_names = {
     "suffix": "Suffix",
     "system": "System",
     "term_date": "Termination date",
-    "ytd_gross_earnings": "2017 Gross Earnings",
+    "ytd_gross_earnings": "Gross Yearly Earnings",
 }
 
 
@@ -150,3 +152,26 @@ def vue_url(entry):
         return parse.urljoin("http://localhost:9002/static/", entry)
 
     return manifest.get(entry) or ""
+
+
+@register(filter_registry)
+@contextfilter
+def abs_url(context, url_path):
+    base_url = context["site_info"]["baseURL"]
+    return parse.urljoin(base_url, url_path)
+
+
+@register(global_func_registry)
+@contextfunction
+def get_path(context):
+    path = "/"
+    url_json = context.resolve("url_json")
+    if url_json:
+        path = url_json.replace(".json", "", 1)
+    return path
+
+
+@register(global_func_registry)
+@contextfunction
+def get_absolute_url(context):
+    return abs_url(context, get_path(context))
