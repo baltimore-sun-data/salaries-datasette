@@ -1,8 +1,9 @@
 import "choices.js/public/assets/styles/choices.css";
-import Choices from "choices.js";
 import { each } from "./utils.js";
 
-each("#agency-search", el => {
+each("#agency-search", async el => {
+  let { default: Choices } = await import("choices.js");
+
   new Choices(el, {
     itemSelectText: "",
     fuseOptions: {
