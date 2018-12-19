@@ -290,7 +290,8 @@ img.scale-with-grid {
 /* #Buttons
 ================================================== */
 
-.button, a.button,
+.button,
+a.button,
 button,
 input[type="submit"],
 input[type="reset"],
@@ -603,7 +604,7 @@ th {
   }
 
   .table-wrapper__responsive td:before {
-    content: attr(data-col)": ";
+    content: attr(data-col) ": ";
     font-weight: bold;
   }
 }
