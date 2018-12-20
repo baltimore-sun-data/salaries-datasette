@@ -1,4 +1,4 @@
-import "./css/app.css";
+import "./css/app.scss";
 
 import "./js/social.js";
 import "./js/choices.js";
