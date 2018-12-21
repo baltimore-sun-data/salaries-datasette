@@ -9,10 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     {% if not is_vue_dev %}
+      <link rel="preload" as="font" href='/static/fonts/icons/icons.woff?fylnot' crossorigin>
+      <link rel="preload" as="font" href='/static/fonts/lato/lato-v14-latin-regular.woff2' crossorigin>
+      <link rel="preload" as="font" href='/static/fonts/montserrat/montserrat-v12-latin-regular.woff2' crossorigin>
       <link rel="stylesheet" type="text/css" href='{{ "app.css" | vue_url }}'>
     {% endif %}
     <script src='{{ "app.js" | vue_url }}' defer></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Start: GPT Async -->
     <script type='text/javascript'>
