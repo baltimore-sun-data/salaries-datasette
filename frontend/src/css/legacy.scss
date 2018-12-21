@@ -760,15 +760,13 @@ div .search-row input {
   border-radius: 5px;
 }
 
-#ad-slot {
+.ad-slot {
   background-color: #ccc;
+  height: 90px;
   margin: 0 auto 20px auto;
   width: 728px;
-  height: 90px;
-}
 
-@media (max-width: 750px) {
-  #ad-slot {
+  @media (max-width: 750px) {
     height: 250px;
     overflow: hidden;
     width: 320px;
