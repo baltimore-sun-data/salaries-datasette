@@ -16,7 +16,8 @@ module.exports = {
     port: "9002",
     allowedHosts: ["*"],
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "no-cache"
     }
   },
   configureWebpack: {
