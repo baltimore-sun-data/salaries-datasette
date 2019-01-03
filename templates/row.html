@@ -10,7 +10,7 @@
             {% for cell in row if not cell.column == 'rowid' %}
             <tr>
                 <th>{{ cell.column|format_name_long }}</th>
-                <td class="col-left">{{ format_for(cell.value, cell.column) }}</td>
+                <td class="col-left">{{ cell.value }}</td>
             </tr>
             {% endfor %}
     {% endfor %}
