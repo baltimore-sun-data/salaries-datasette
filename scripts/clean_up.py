@@ -46,6 +46,7 @@ orgs = {
     "DEPT OF INFORMATION TECH": "Department of Information Technology",
     "DEPT OF JUVENILE SERVICES": "Department of Juvenile Services",
     "DEPT OF LABOR, LICENSING \u0026 REG": "Department of Labor, Licensing and Regulation",
+    "DEPT OF LABOR  LICENSING & REG": "Department of Labor, Licensing and Regulation",
     "DEPT OF NATURAL RESOURCES": "Department of Natural Resources",
     "DEPT OF NATURAL RESOURES": "Department of Natural Resources",
     "DEPT OF PUB SAFETY \u0026 COR SERV": "Department of Public Safety and Correctional Services",
@@ -99,6 +100,10 @@ orgs = {
     "SUBSEQUENT INJURY FUND": "Subsequent Injury Fund",
     "UNIVERSITY OF MARYLAND": "University of Maryland",
     "WORKERS' COMPENSATION COM": "Workers' Compensation Commision",
+    "DEP OF HEALTH & MENTAL HYGIENE": "Department of Health and Mental Hygiene",
+    "DEPARTMENT OF HUMAN RESOURCES": "Department of Human Resources",
+    "COLLEGE SAVINGS PLANS": "College Savings Plans",
+    "MARYLAND HEALTH INSURANCE PLAN": "Maryland Health Insurance Plan",
 }
 
 
@@ -109,7 +114,17 @@ def main():
             "static/csv/cy2017-md.csv",
             "data/cy2017-md.csv",
             "2017 Maryland state salaries",
-        )
+        ),
+        (
+            "static/csv/cy2016-md.csv",
+            "data/cy2016-md.csv",
+            "2016 Maryland state salaries",
+        ),
+        (
+            "static/csv/cy2015-md.csv",
+            "data/cy2015-md.csv",
+            "2015 Maryland state salaries",
+        ),
     ]
 
     try:
@@ -137,11 +152,13 @@ def process_csv(inname, outname):
         dr = csv.DictReader(fi)
         objs = list(dr)
 
-    for f in [not_zero]:
-        objs = filter(f, objs)
+    filters = [not_zero]
+    for func in filters:
+        objs = filter(func, objs)
 
-    for f in [fix_null, fix_org, fix_subtitle, fix_term]:
-        objs = map(f, objs)
+    transforms = [fix_null, fix_org, fix_subtitle, fix_term, fix_extra_fields]
+    for func in transforms:
+        objs = map(func, objs)
 
     objs = sorted(objs, key=sort_key)
 
@@ -187,20 +204,33 @@ def fix_subtitle(row):
     return row
 
 
-date_re = re.compile(r"(\d\d?)\D(\d\d?)\D(\d\d?)")
+date_re = re.compile(r"(\d\d?)\D(\d\d?)\D(\d{2,4})")
 
 
 def fix_term(row):
+    if "term_date" not in row:
+        return row
+
     term_date = ""  # Default to remove zeros
     term_match = date_re.match(row["term_date"])
     if term_match:
         month, day, year = term_match[1], term_match[2], term_match[3]
-        year = "19" + year if year > "18" else "20" + year
+        # Handle 2 digit years
+        if len(year) == 2:
+            year = "19" + year if year > "18" else "20" + year
         term_date = f"{year}-{month.zfill(2)}-{day.zfill(2)}"
+    # Some files just mark T vs. nothing
+    # Let it pass through
+    elif row["term_date"] == "T":
+        term_date = "T"
 
     row["term_date"] = term_date
 
     return row
+
+
+def fix_extra_fields(row):
+    return {field: row[field] for field in fieldnames if field in row}
 
 
 def sort_key(obj):
