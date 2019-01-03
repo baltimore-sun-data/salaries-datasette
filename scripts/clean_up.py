@@ -47,6 +47,7 @@ orgs = {
     "DEPT OF JUVENILE SERVICES": "Department of Juvenile Services",
     "DEPT OF LABOR, LICENSING \u0026 REG": "Department of Labor, Licensing and Regulation",
     "DEPT OF LABOR  LICENSING & REG": "Department of Labor, Licensing and Regulation",
+    "DEPT OF LABOR   LICENSING & REG": "Department of Labor, Licensing and Regulation",
     "DEPT OF NATURAL RESOURCES": "Department of Natural Resources",
     "DEPT OF NATURAL RESOURES": "Department of Natural Resources",
     "DEPT OF PUB SAFETY \u0026 COR SERV": "Department of Public Safety and Correctional Services",
@@ -104,6 +105,7 @@ orgs = {
     "DEPARTMENT OF HUMAN RESOURCES": "Department of Human Resources",
     "COLLEGE SAVINGS PLANS": "College Savings Plans",
     "MARYLAND HEALTH INSURANCE PLAN": "Maryland Health Insurance Plan",
+    "DEPT BUSINESS & ECONOMIC DEV": "Department of Business and Economic Development",
 }
 
 
@@ -125,6 +127,21 @@ def main():
             "data/cy2015-md.csv",
             "2015 Maryland state salaries",
         ),
+        (
+            "static/csv/cy2014-md.csv",
+            "data/cy2014-md.csv",
+            "2014 Maryland state salaries",
+        ),
+        (
+            "static/csv/cy2013-md.csv",
+            "data/cy2013-md.csv",
+            "2013 Maryland state salaries",
+        ),
+        (
+            "static/csv/cy2012-md.csv",
+            "data/cy2012-md.csv",
+            "2012 Maryland state salaries",
+        )
     ]
 
     try:
@@ -237,7 +254,7 @@ def sort_key(obj):
     return (
         obj["last_name"],
         obj["first_name"],
-        obj["middle_initial"],
+        obj.get("middle_initial", ""),
         obj["ytd_gross_earnings"],
     )
 
