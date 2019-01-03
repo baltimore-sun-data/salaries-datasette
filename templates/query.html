@@ -16,7 +16,8 @@
 <div class="center">
     <a class="back-btn" href="/">Back to main search</a>
 </div>
-{% if rows %}
+
+{% if display_rows %}
     <div class="table-wrapper table-wrapper__responsive">
     <table class="dbresults">
         <thead>
@@ -29,17 +30,16 @@
             </tr>
         </thead>
         <tbody>
-        {% for row in rows %}
+        {% for row in display_rows %}
             <tr class="fancyfloat">
-                {% for cell in row %}
-                    {% set col = columns[loop.index0] %}
+                {% for col, cell in zip(columns, row) %}
                     <td
                         data-col="{{ col|format_name }}"
                         {% if col is numeric %}
                             class="col-right"
                         {% endif %}
                     >
-                        {{ format_for(cell, col) }}
+                        {{ cell }}
                     </td>
                 {% endfor %}
             </tr>

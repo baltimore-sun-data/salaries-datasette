@@ -30,6 +30,11 @@ def prepare_jinja2_environment(env):
     env.globals.update({name: f() for name, f in global_registry.items()})
 
 
+@hookimpl
+def render_cell(value, column):
+    return format_for(value, column)
+
+
 @register(global_registry)
 def site_info():
     with open("site_info.json") as f:
@@ -79,7 +84,7 @@ def format_money(val):
     except ValueError:
         return val
 
-    return "${:,.2f}".format(numeric)
+    return "${:,.0f}".format(numeric)
 
 
 @register(filter_registry)

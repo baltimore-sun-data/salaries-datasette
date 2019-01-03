@@ -27,7 +27,7 @@
                     <td
                         data-col="{{ cell.column|format_name }}"
                         class="{% if cell.column is numeric %}col-right{% endif %} {{ cell.column }}"
-                    >{{ format_for(cell.value, cell.column) }}</td>
+                    >{{ cell.value }}</td>
                 {% endfor %}
             </tr>
         {% endfor %}
