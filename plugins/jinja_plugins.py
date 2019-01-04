@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from urllib import parse
 
 from jinja2 import contextfilter, contextfunction
@@ -180,3 +181,22 @@ def get_path(context):
 @contextfunction
 def get_absolute_url(context):
     return abs_url(context, get_path(context))
+
+
+non_alpha_re = re.compile(r"\W")
+
+
+@register(filter_registry)
+def kabob_case(s):
+    if s:
+        return non_alpha_re.sub("-", s.lower())
+
+
+@register(global_func_registry)
+@contextfunction
+def omniture_page_name(context):
+    table = context.resolve("table")
+    if not table:
+        return "bs:newsserver:maryland:salaries:dataproject."
+
+    return f"bs:newsserver:maryland:salaries:dataproject:{kabob_case(table)}."
