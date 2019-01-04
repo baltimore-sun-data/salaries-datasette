@@ -141,7 +141,7 @@ def main():
             "static/csv/cy2012-md.csv",
             "data/cy2012-md.csv",
             "2012 Maryland state salaries",
-        )
+        ),
     ]
 
     try:
