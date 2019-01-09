@@ -9,7 +9,7 @@ COPY frontend/ .
 
 RUN yarn build
 
-FROM python:3.6 as py-base
+FROM python:3.7 as py-base
 
 WORKDIR /app
 
