@@ -81,7 +81,11 @@
       </div>
   </nav>
   <section id="salary-content">
-      {% if table %}<h2 class="sub-title">{{ table }}</h2>{% endif %}
+      {% if table %}
+        <h2 class="sub-title">
+          <a href="/{{ database }}-{{ database_hash }}/{{ table|quote_plus }}">{{ table }}</a>
+        </h2>
+      {% endif %}
       <h1 class="title"><a href="/">{{ site_info.siteTitle }}</a></h1>
       {% block content %}
       {% endblock %}
