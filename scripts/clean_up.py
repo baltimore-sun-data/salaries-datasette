@@ -39,7 +39,7 @@ orgs = {
     "DEPT HOUSING \u0026 COMMUNITY DEV": "Department Housing and Community Development",
     "DEPT HOUSING AND COMMUNITY DEV": "Department Housing and Community Development",
     "DEPT OF AGRICULTURE": "Department of Agriculture",
-    "DEPT OF ASSESSMENTS \u0026 TAXATION": "Deparment of Assessments and Taxation",
+    "DEPT OF ASSESSMENTS \u0026 TAXATION": "Department of Assessments and Taxation",
     "DEPT OF BUDGET AND MANAGEMENT": "Department of Budget and Management",
     "DEPT OF COMMERCE": "Department of Commerce",
     "DEPT OF ENVIRONMENT": "Department of Environment",
