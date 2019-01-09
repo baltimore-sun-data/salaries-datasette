@@ -13,7 +13,7 @@
 <form class="sql" action="/{{ database }}-{{ database_hash }}" method="get">
     <h3>Custom SQL query</h3>
     <p>Note: Database uses <a href="https://www.sqlite.org/lang.html">SQLite</a> syntax.</p>
-    <p><textarea name="sql">select * from {{ tables[0].name|escape_sqlite }}</textarea></p>
+    <p><textarea name="sql">select * from [2017 Maryland state salaries]</textarea></p>
     <p><input type="submit" value="Custom SQL Query"></p>
 </form>
 
