@@ -2,11 +2,6 @@
 
 {% block title %}Custom SQL Query{% endblock %}
 
-{% block extra_head %}
-{{ super() }}
-{% include "_codemirror.html" %}
-{% endblock %}
-
 {% block body_class %}db db-{{ database|to_css_class }}{% endblock %}
 
 {% block content %}
@@ -32,23 +27,4 @@
         {% endfor %}
     </ul>
 {% endif %}
-
-{% include "_codemirror_foot.html" %}
-
-<script>
-document.querySelectorAll('.sql[disabled]').forEach(function(el){
-    var editor = CodeMirror.fromTextArea(el, {
-      lineNumbers: true,
-      mode: "text/x-sql",
-      lineWrapping: true,
-      readOnly: true
-    });
-    editor.setOption("extraKeys", {
-      "Shift-Enter": function() {
-        document.getElementsByClassName("sql")[0].submit();
-      },
-      Tab: false
-    });
-});
-</script>
 {% endblock %}
