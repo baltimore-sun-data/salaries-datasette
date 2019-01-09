@@ -2,11 +2,6 @@
 
 {% block title %}Error{% endblock %}
 
-{% block extra_head %}
-{{ super() }}
-{% include "_codemirror.html" %}
-{% endblock %}
-
 {% block content %}
 
 {% if error %}
@@ -21,8 +16,6 @@
 
         <p><input type="submit" value="Run SQL"></p>
     </form>
-
-    {% include "_codemirror_foot.html" %}
 {% endif %}
 
 {% endblock %}

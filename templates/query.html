@@ -2,11 +2,6 @@
 
 {% block title %}{{ canned_query.replace("-", " ") if canned_query else "Custom SQL query" }}{% endblock %}
 
-{% block extra_head %}
-{{ super() }}
-{% include "_codemirror.html" %}
-{% endblock %}
-
 {% block body_class %}query db-{{ database|to_css_class }}{% endblock %}
 
 {% block content %}
@@ -65,7 +60,5 @@
     {% endif %}
     <p><input type="submit" value="Run SQL"></p>
 </form>
-
-{% include "_codemirror_foot.html" %}
 {% endif %}
 {% endblock %}
