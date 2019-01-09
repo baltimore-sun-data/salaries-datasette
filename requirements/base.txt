@@ -8,8 +8,8 @@ httptools==0.0.10
 hupper==1.0
 Jinja2==2.10
 MarkupSafe==1.0
-numpy==1.14.0
-pandas==0.20.3
+numpy==1.15.4
+pandas==0.23.4
 Pint==0.8.1
 pluggy==0.7.1
 py-lru-cache==0.1.4
@@ -20,5 +20,5 @@ sanic==0.7.0
 six==1.11.0
 tzlocal==1.5.1
 ujson==1.35
-uvloop==0.9.1
+uvloop==0.11.3
 websockets==7.0
