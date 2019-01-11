@@ -1,5 +1,5 @@
 -e git+https://github.com/simonw/csvs-to-sqlite.git@0.8.1#egg=csvs_to_sqlite
--e git+https://github.com/simonw/datasette.git@0.25.2#egg=datasette
+-e git+https://github.com/simonw/datasette.git@0.26.1#egg=datasette
 aiofiles==0.3.2
 click-default-group==1.2
 click==6.7
