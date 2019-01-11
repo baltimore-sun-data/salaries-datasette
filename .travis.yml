@@ -7,7 +7,9 @@ cache:
   - yarn
 
 python:
-  - "3.6"
+  - "3.7"
+
+dist: xenial
 
 before_install:
   - nvm install 11
