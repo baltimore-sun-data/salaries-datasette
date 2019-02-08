@@ -15,7 +15,7 @@ function setup() {
 
 	# Travis breaks Python for some reason
 	if [ -n "${TRAVIS:-}" ]; then
-		PYTHON="/opt/python/3.6/bin/python"
+		PYTHON="/opt/python/3.7/bin/python"
 	fi
 	echo "Test for Python 3"
 	[[ -z $(which "$PYTHON") ]] && brew install python3
