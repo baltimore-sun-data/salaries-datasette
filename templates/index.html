@@ -5,13 +5,18 @@
 {% block body_class %}index{% endblock %}
 
 {% set top_earners = [
-    { "name": "Mark Turgeon", "amount": "$2,720,000", "url": "/salaries/2017+Maryland+state+salaries/112317" },
-    { "name": "Daniel Durkin", "amount": " $2,494,000", "url": "/salaries/2017+Maryland+state+salaries/30863" },
-    { "name": "Brenda Frese", "amount": "$1,180,000", "url": "/salaries/2017+Maryland+state+salaries/37205" },
-    { "name": "Stephen Bartlett", "amount": "$951,000", "url": "/salaries/2017+Maryland+state+salaries/7156" },
-    { "name": "Jay Perman", "amount": "$945,000", "url": "/salaries/2017+Maryland+state+salaries/86127" },
+    { "name": "Daniel Durkin", "amount": " $4,793,000", "url": "/salaries-055cc65/2018+Maryland+state+salaries/25473" },
+    { "name": "Mark Turgeon", "amount": "$2,828,000", "url": "/salaries-055cc65/2018+Maryland+state+salaries/93509" },
+    { "name": "Brenda Frese", "amount": "$1,186,000", "url": "/salaries-055cc65/2018+Maryland+state+salaries/30744" },
+    { "name": "Mathew Canada", "amount": "$1,129,000", "url": "/salaries-055cc65/2018+Maryland+state+salaries/14118" },
+    { "name": "Bartley Griffith", "amount": "$967,000", "url": "/salaries-055cc65/2018+Maryland+state+salaries/35332" },
 ] %}
 {% set datasets = [
+    {
+      "name": "2018 Maryland state salaries",
+      "url": "/salaries/2018+Maryland+state+salaries",
+      "csv": "/static/csv/cy2018-md.csv",
+    },
     {
       "name": "2017 Maryland state salaries",
       "url": "/salaries/2017+Maryland+state+salaries",
@@ -63,14 +68,14 @@
     </div>
 
 <section class="l-index-block l-index-block__centered">
-  <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
+  <form class="dbsearch" action="/salaries/2018+Maryland+state+salaries" method="get">
       <label class="label" for="_search">Basic search:</label>
       <input id="_search" type="search" name="_search" placeholder="Name or organization">
       <button class="full-width" type="submit">Go</button>
   </form>
 
   <div class="">
-    <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
+    <form class="dbsearch" action="/salaries/2018+Maryland+state+salaries" method="get">
      <label class="label" for="agency-search">View by organization:</label>
      <input type="hidden" name="_filter_column" value="organization">
      <input type="hidden" name="_filter_op" value="exact">
@@ -86,7 +91,7 @@
      </div>
     </form>
 
-    <form class="dbsearch" action="/salaries/2017+Maryland+state+salaries" method="get">
+    <form class="dbsearch" action="/salaries/2018+Maryland+state+salaries" method="get">
      <label class="label" for="advanced-search">Advanced search:</label>
 
      <div class="filter-row">
@@ -103,11 +108,12 @@
         <option value="agency">agency</option>
         <option value="class_code">class code</option>
         <option value="pay_rate">pay rate</option>
-        <option value="ytd_gross_earnings">2017 gross earnings</option>
+        <option value="ytd_gross_earnings">2018 gross earnings</option>
         <option value="annual_salary">annual salary</option>
         <option value="regular_earnings">regular earnings</option>
         <option value="overtime_earnings">overtime earnings</option>
         <option value="other_earnings">other earnings</option>
+        <option value="hire_date">hire date</option>
         <option value="term_date">termination date</option>
        </select>
       </div>

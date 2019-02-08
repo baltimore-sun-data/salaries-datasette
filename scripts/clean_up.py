@@ -21,6 +21,7 @@ fieldnames = [
     "regular_earnings",
     "overtime_earnings",
     "other_earnings",
+    "hire_date",
     "term_date",
 ]
 
@@ -64,6 +65,7 @@ orgs = {
     "MARYLAND INSURANCE ADMIN": "Insurance Administration",
     "MARYLAND OFFICE OF PLANNING": "Office of Planning",
     "MARYLAND SCHOOL FOR THE DEAF": "Maryland School for the Deaf",
+    "MARYLAND STATE LIBRARY AGENCY": "Maryland State Library Agency",
     "MARYLAND TAX COURT": "Maryland Tax Court",
     "MARYLAND529": "Maryland 529",
     "MD AFRICAN AMERICAN MUSEUM": "Maryland African American Museum",
@@ -94,6 +96,7 @@ orgs = {
     "ST. MARY'S COLLEGE OF MARYLAND": "St. Mary's College of Maryland",
     "STATE ARCHIVES": "State Archives",
     "STATE DEPARTMENT OF EDUCATION": "State Department of Education",
+    "MD STATE DEPT OF EDUCATION": "Maryland State Department of Education",
     "STATE LOTTERY AGENCY": "State Lottery Agency",
     "STATE RETIREMENT AGENCY": "State Retirement Agency",
     "STATE TREASURER": "State Treasurer",
@@ -112,6 +115,11 @@ orgs = {
 def main():
     output_db = "data/salaries.db"
     tables = [
+        (
+            "static/csv/cy2018-md.csv",
+            "data/cy2018-md.csv",
+            "2018 Maryland state salaries",
+        ),
         (
             "static/csv/cy2017-md.csv",
             "data/cy2017-md.csv",

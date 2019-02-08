@@ -58,6 +58,7 @@ formatted_names = {
     "suffix": "Suffix",
     "system": "System",
     "term_date": "Termination date",
+    "hire_date": "Hire date",
     "ytd_gross_earnings": "Gross Yearly Earnings",
 }
 
