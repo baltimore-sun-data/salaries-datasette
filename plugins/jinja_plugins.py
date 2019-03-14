@@ -83,7 +83,7 @@ def format_name_long(val):
 def format_money(val):
     try:
         numeric = float(val)
-    except ValueError:
+    except (ValueError, TypeError):
         return val
 
     return "${:,.0f}".format(numeric)
@@ -93,7 +93,7 @@ def format_money(val):
 def format_numeric(val):
     try:
         numeric = float(val)
-    except ValueError:
+    except (ValueError, TypeError):
         return val
 
     return "{:,.0f}".format(numeric)
