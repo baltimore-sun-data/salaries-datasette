@@ -181,7 +181,7 @@ def process_csv(inname, outname):
     for func in filters:
         objs = filter(func, objs)
 
-    transforms = [fix_null, fix_org, fix_subtitle, fix_term, fix_extra_fields]
+    transforms = [fix_null, fix_org, fix_subtitle, fix_term, fix_hire, fix_extra_fields]
     for func in transforms:
         objs = map(func, objs)
 
@@ -232,12 +232,12 @@ def fix_subtitle(row):
 date_re = re.compile(r"(\d\d?)\D(\d\d?)\D(\d{2,4})")
 
 
-def fix_term(row):
-    if "term_date" not in row:
+def fix_date(row, fieldname):
+    if fieldname not in row:
         return row
 
     term_date = ""  # Default to remove zeros
-    term_match = date_re.match(row["term_date"])
+    term_match = date_re.match(row[fieldname])
     if term_match:
         month, day, year = term_match[1], term_match[2], term_match[3]
         # Handle 2 digit years
@@ -246,12 +246,20 @@ def fix_term(row):
         term_date = f"{year}-{month.zfill(2)}-{day.zfill(2)}"
     # Some files just mark T vs. nothing
     # Let it pass through
-    elif row["term_date"] == "T":
+    elif row[fieldname] == "T":
         term_date = "T"
 
-    row["term_date"] = term_date
+    row[fieldname] = term_date
 
     return row
+
+
+def fix_term(row):
+    return fix_date(row, "term_date")
+
+
+def fix_hire(row):
+    return fix_date(row, "hire_date")
 
 
 def fix_extra_fields(row):
