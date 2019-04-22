@@ -66,11 +66,11 @@ frontend)
 	;;
 
 setup)
-	setup requirements/dev.txt
+	setup requirements/dev-freeze.txt
 	;;
 
 setup-prod)
-	setup requirements/prod.txt
+	setup requirements/prod-freeze.txt
 	;;
 
 setup-frontend)
