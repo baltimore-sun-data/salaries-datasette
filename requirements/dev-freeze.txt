@@ -4,8 +4,8 @@
 #
 #    pip-compile requirements/dev.txt --output-file requirements/dev-freeze.txt
 #
--e git+https://github.com/simonw/csvs-to-sqlite.git@0.8.1#egg=csvs_to_sqlite
--e git+https://github.com/simonw/datasette.git@0.26.1#egg=datasette
+-e git+https://github.com/simonw/csvs-to-sqlite.git@0.9#egg=csvs_to_sqlite
+-e git+https://github.com/simonw/datasette.git@9cd3b4#egg=datasette
 aiofiles==0.3.2           # via sanic
 appdirs==1.4.3            # via black
 attrs==19.1.0             # via black
@@ -17,11 +17,11 @@ entrypoints==0.3          # via flake8
 flake8==3.7.7
 httptools==0.0.10         # via sanic
 hupper==1.0
-jinja2==2.10
+jinja2==2.10.1
 markupsafe==1.0           # via jinja2
 mccabe==0.6.1             # via flake8
 numpy==1.15.4             # via pandas
-pandas==0.20.3
+pandas==0.24.2
 pint==0.8.1
 pip-tools==3.6.0
 pluggy==0.7.1
