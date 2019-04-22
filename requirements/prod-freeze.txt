@@ -4,19 +4,19 @@
 #
 #    pip-compile requirements/prod.txt --output-file requirements/prod-freeze.txt
 #
--e git+https://github.com/simonw/csvs-to-sqlite.git@0.8.1#egg=csvs_to_sqlite
--e git+https://github.com/simonw/datasette.git@0.26.1#egg=datasette
+-e git+https://github.com/simonw/csvs-to-sqlite.git@0.9#egg=csvs_to_sqlite
+-e git+https://github.com/simonw/datasette.git@9cd3b4#egg=datasette
 aiofiles==0.4.0           # via sanic
 click-default-group==1.2
 click==6.7                # via click-default-group
 dateparser==0.7.0
 httptools==0.0.13         # via sanic
 hupper==1.0
-jinja2==2.10
+jinja2==2.10.1
 markupsafe==1.1.1         # via jinja2
 newrelic==4.18.0.118
 numpy==1.16.3             # via pandas
-pandas==0.20.3
+pandas==0.24.2
 pint==0.8.1
 pluggy==0.9.0
 py-lru-cache==0.1.4
