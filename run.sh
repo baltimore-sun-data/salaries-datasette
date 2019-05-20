@@ -57,7 +57,9 @@ serve-prod)
 		--template-dir ./templates \
 		--static "static:./dist" \
 		--metadata metadata.json \
-		data/*.db
+		--config hash_urls:1 \
+		--immutable data/*.db \
+		--inspect-file=data/counts.json
 	;;
 
 frontend)
@@ -82,6 +84,9 @@ setup-frontend)
 
 create-db)
 	venv-datasette/bin/python scripts/clean_up.py
+	venv-datasette/bin/datasette inspect \
+		data/*.db \
+		--inspect-file=data/counts.json
 	;;
 
 format)

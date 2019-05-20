@@ -5,7 +5,7 @@
 #    pip-compile requirements/dev.txt --output-file requirements/dev-freeze.txt
 #
 -e git+https://github.com/simonw/csvs-to-sqlite.git@0.9#egg=csvs_to_sqlite
--e git+https://github.com/simonw/datasette.git@9cd3b4#egg=datasette
+-e git+https://github.com/simonw/datasette.git@0.28#egg=datasette
 aiofiles==0.4.0           # via sanic
 appdirs==1.4.3            # via black
 attrs==19.1.0             # via black
