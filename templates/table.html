@@ -9,7 +9,7 @@
 
 {% block content %}
 
-<form class="filters" action="/{{ database }}-{{ database_hash }}/{{ table|quote_plus }}" method="get">
+<form class="filters" action="/{{ database }}/{{ table|quote_plus }}" method="get">
 
     {% if supports_search %}
         <div class="dbsearch search-table"><label for="_search">Search:</label><input id="_search" type="search" name="_search" value="{{ search }}"></div>
