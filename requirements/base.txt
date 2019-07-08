@@ -1,2 +1,2 @@
 -e git+https://github.com/simonw/csvs-to-sqlite.git@0.9#egg=csvs_to_sqlite
--e git+https://github.com/simonw/datasette.git@0.28#egg=datasette
+-e git+https://github.com/simonw/datasette.git@0.29#egg=datasette

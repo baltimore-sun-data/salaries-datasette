@@ -93,7 +93,7 @@
 
 </form>
 
-{% include custom_rows_and_columns_templates %}
+{% include custom_table_templates %}
 
 {% if filtered_table_rows or human_filter_description %}
     <p>{% if filtered_table_rows or filtered_table_rows == 0 %}{{ "{:,}".format(filtered_table_rows) }} row{% if filtered_table_rows == 1 %}{% else %}s{% endif %}{% endif %}
