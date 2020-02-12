@@ -2,12 +2,12 @@
     "databases": {
         "salaries": {
             "queries": {
-                "Top-Earners": "SELECT\n    first_name,\n    last_name,\n    organization,\n    subtitle,\n    ytd_gross_earnings\nFROM\n    \"2018 Maryland state salaries\"\nORDER BY\n    ytd_gross_earnings DESC\nLIMIT\n    50;",
-                "Highest-paid-in-organization": "SELECT\n    organization,\n    first_name,\n    last_name,\n    max(ytd_gross_earnings) AS ytd_gross_earnings\nFROM\n    \"2018 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    ytd_gross_earnings DESC;",
-                "Total-earnings-by-organization": "SELECT\n    organization,\n    sum(ytd_gross_earnings)\n        AS \"Total Organization Earnings(dollars)\"\nFROM\n    \"2018 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    sum(ytd_gross_earnings) DESC;",
-                "Average-salary-per-organization": "SELECT\n    organization,\n    avg(annual_salary) AS \"Average Annual Salary(dollars)\"\nFROM\n    \"2018 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    avg(annual_salary) DESC;",
-                "Overtime-per-organization": "SELECT\n    organization,\n    avg(overtime_earnings) AS \"Average Overtime(dollars)\",\n    max(overtime_earnings) AS \"Max Overtime(dollars)\",\n    count(*) AS \"Total Employees(numeric)\"\nFROM\n    \"2018 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    avg(overtime_earnings) DESC;",
-                "Number-of-employees-in-organization": "\nSELECT\n    organization, pay_rate, count(*) AS \"Employees(numeric)\"\nFROM\n    \"2018 Maryland state salaries\"\nGROUP BY\n    organization, pay_rate\nORDER BY\n    pay_rate ASC, count(*) DESC;"
+                "Top-Earners": "SELECT\n    first_name,\n    last_name,\n    organization,\n    subtitle,\n    ytd_gross_earnings\nFROM\n    \"2019 Maryland state salaries\"\nORDER BY\n    ytd_gross_earnings DESC\nLIMIT\n    50;",
+                "Highest-paid-in-organization": "SELECT\n    organization,\n    first_name,\n    last_name,\n    max(ytd_gross_earnings) AS ytd_gross_earnings\nFROM\n    \"2019 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    ytd_gross_earnings DESC;",
+                "Total-earnings-by-organization": "SELECT\n    organization,\n    sum(ytd_gross_earnings)\n        AS \"Total Organization Earnings(dollars)\"\nFROM\n    \"2019 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    sum(ytd_gross_earnings) DESC;",
+                "Average-salary-per-organization": "SELECT\n    organization,\n    avg(annual_salary) AS \"Average Annual Salary(dollars)\"\nFROM\n    \"2019 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    avg(annual_salary) DESC;",
+                "Overtime-per-organization": "SELECT\n    organization,\n    avg(overtime_earnings) AS \"Average Overtime(dollars)\",\n    max(overtime_earnings) AS \"Max Overtime(dollars)\",\n    count(*) AS \"Total Employees(numeric)\"\nFROM\n    \"2019 Maryland state salaries\"\nGROUP BY\n    organization\nORDER BY\n    avg(overtime_earnings) DESC;",
+                "Number-of-employees-in-organization": "\nSELECT\n    organization, pay_rate, count(*) AS \"Employees(numeric)\"\nFROM\n    \"2019 Maryland state salaries\"\nGROUP BY\n    organization, pay_rate\nORDER BY\n    pay_rate ASC, count(*) DESC;"
             }
         }
     },

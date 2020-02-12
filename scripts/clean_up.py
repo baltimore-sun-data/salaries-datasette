@@ -21,8 +21,8 @@ fieldnames = [
     "regular_earnings",
     "overtime_earnings",
     "other_earnings",
-    "hire_date",
-    "term_date",
+  #  "hire_date",
+    "term_date"
 ]
 
 orgs = {
@@ -116,7 +116,13 @@ def main():
     output_db = "data/salaries.db"
     tables = [
         (
-            "static/csv/cy2018-md.csv",
+            "static/csv/cy2019-md.csv",
+            "data/cy2019-md.csv",
+            "2019 Maryland state salaries",
+        )
+        ,
+        (
+           "static/csv/cy2018-md.csv",
             "data/cy2018-md.csv",
             "2018 Maryland state salaries",
         ),

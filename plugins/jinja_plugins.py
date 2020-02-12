@@ -44,7 +44,7 @@ def site_info():
 
 formatted_names = {
     "agency": "Agency code",
-    "annual_salary": "Annual salary",
+    "annual_salary": "Base salary",
     "class_code": "Class code",
     "first_name": "First Name",
     "last_name": "Last Name",
